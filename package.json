@@ -5,14 +5,12 @@
   "main": "index.js",
   "author": "Chris Chan, Tushig Ochirhkuyag, and William Xie",
   "dependencies": {
+    "blpapi": "latest",
     "cheerio": "latest",
     "request": "latest",
     "jquery": "latest",
     "fs": "latest",
-<<<<<<< HEAD
-    "Sentimental": "latest"
-=======
+    "Sentimental": "latest",
     "feed-read": "latest"
->>>>>>> FETCH_HEAD
   }
 }
