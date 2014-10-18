@@ -23,7 +23,7 @@ h2{
     font-size: 24px;
     display: inline-block;
     text-align: center;
-    margin-top: 100px;
+    margin-top: 55px;
     margin-bottom:0px;
     width: 100%;
     padding: 7px 0px 7px;
@@ -119,6 +119,7 @@ h3
 }
 input
 {
+  font-size: 14px;
   height:30px;
 }
 ::selection {
