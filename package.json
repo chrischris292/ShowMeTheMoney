@@ -1,12 +1,12 @@
 {
-  "name": "socket.io-chat",
-  "version": "0.0.0",
-  "description": "A simple chat client using socket.io",
+  "name": "ShowMeTheMoney",
+  "version": "1.0.0",
+  "description": "Stock data visualization comparing public sentiment to trade volumes",
   "main": "index.js",
-  "author": "Grant Timmerman",
-  "private": true,
-  "license": "BSD",
+  "author": "Chris Chan, Tushig Ochirhkuyag, and William Xie",
   "dependencies": {
-    "express": "3.4.8"
+    "cheerio": "latest",
+    "request": "latest",
+    "jquery": "latest"
   }
 }
