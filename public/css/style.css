@@ -574,9 +574,10 @@ hr {
 /* Profile */
 .profile-pic {
     width: 120px;
-    margin: 9px 0 4px;
+    margin: 9px 0 10px;
     border-radius: 100px !important;
     border: 6px solid rgba(0,0,0,0.2);
+    cursor: pointer;
 }
 
 .cover img {
@@ -2334,3 +2335,7 @@ a.list-group-item.active > .badge,
     z-index: 999;
 }
 
+#company-logo {
+    width: 120px;
+    height: 120px;
+}

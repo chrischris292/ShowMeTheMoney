@@ -26,13 +26,11 @@ server.listen(port, function () {
 // Routing
 app.use(express.static(__dirname + '/public'));
 
-
-
 var results =[];
 var resultSorted = [];
 app.post('/stocks', function(req, res){
 	var query = "https://news.google.com/news/feeds?q="+req.body.stockTicker+"&output=rss&num=100&scoring=n";
-	feed(query, function(err, articles) {
+	feed(query, function(err, articles) { 
 		if (err) {
 			throw err;
 		}	
@@ -48,17 +46,28 @@ app.post('/stocks', function(req, res){
 			results.push(new Article(title, date, description, url, score));
 			resultSorted.push(new Article(title, date, description, url, score));
 		}
-		console.log(results.length)
 		res.send(results);
 	})
 })
-
-
 app.get("/sortStocks",function(req,res){
 	sortResults("score",true);
-	console.log(resultSorted.length)
 
 	res.send(resultSorted);
+})
+
+app.post('/company', function(req, res) {
+	var query = "http://api.glassdoor.com/api/api.htm?t.p=26106&t.k=g3q6WWopG8O&userip=0.0.0.0&useragent=&format=json&v=1&action=employers&q=" + req.body.stockName;
+	request(query, function(error, response, data) {
+		if (error) {
+			throw error;
+		}
+		var name = JSON.parse(data).response.employers[0].name;
+		var ceo = JSON.parse(data).response.employers[0].ceo.name;
+		var logo = JSON.parse(data).response.employers[0].squareLogo;
+		var homePage = JSON.parse(data).response.employers[0].website;
+		var company = new Glass(name, ceo, logo, homePage);
+		res.send(company);
+	});
 })
 
 
@@ -75,4 +84,11 @@ Article = function(title, date, description, url, score) {
 	this.description = description;
 	this.url = url;
 	this.score = score;
+}
+
+Glass = function(name, ceo, logo, homePage) {
+	this.name = name;
+	this.ceo = ceo;
+	this.logo = logo;
+	this.homePage = homePage;
 }

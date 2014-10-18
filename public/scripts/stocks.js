@@ -4,15 +4,22 @@ $.post("/stocks",
     stockTicker:"amd"
   },
   function(unsortedData,status){
-  	console.log(unsortedData)
 	populatetopNews(unsortedData)
 
 	$.get("/sortStocks",function(sortedData){
-		console.log(sortedData);
 		populateTopSentiment(sortedData)
 	})
     //alert("Data: " + data + "\nStatus: " + status);
   });
+
+$.post("/company",
+	{
+		stockName: "AMD",
+		stockTicker: "amd"
+	},
+	function(results, status) {
+		populateCompanyData(results);
+	});
 
 
 function populatetopNews(unsortedData){
@@ -41,7 +48,6 @@ function populateTopSentiment(sortedData){
 	}
 	for(i = sortedData.length-1;i>sortedData.length-6;i=i-1)
 	{
-		console.log(i)
 		var temp = sortedData[i];
 		var title = temp.title;
 		var score = temp.score;
@@ -51,4 +57,21 @@ function populateTopSentiment(sortedData){
 		}
 
 	}
+}
+
+function populateCompanyData(company) {
+	var name = company.name;
+	var ceo = company.ceo;
+	var logo_link = company.logo;
+	var homePage = "http://" + company.homePage;
+
+	if (name === "AMD") {
+		name = "Advanced Micro Devices";
+	}
+	$("#profile-menu").append(name);
+	$(".profile-pic").attr("src", logo_link);
+	$(".profile-pic").click(function() {
+		window.location.href = homePage;
+	});
+
 }
