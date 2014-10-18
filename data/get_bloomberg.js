@@ -7,5 +7,3 @@ var c = require('./Console.js');
 var blpapi = require("blpapi");
 
 
-
-

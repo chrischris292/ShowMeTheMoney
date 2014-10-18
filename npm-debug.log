@@ -1,0 +1,213 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/bin/npm', 'install', 'blpapi' ]
+2 info using npm@2.1.4
+3 info using node@v0.10.32
+4 verbose node symlink /usr/bin/node
+5 warn package.json ShowMeTheMoney@1.0.0 No repository field.
+6 warn package.json ShowMeTheMoney@1.0.0 No README data
+7 warn package.json fs@0.0.2 fs is also the name of a node core module.
+8 warn package.json fs@0.0.2 No description
+9 warn package.json fs@0.0.2 No repository field.
+10 warn package.json fs@0.0.2 No README data
+11 silly cache add args [ 'blpapi@latest', null ]
+12 verbose cache add spec blpapi@latest
+13 silly cache add parsed spec { raw: 'blpapi@latest',
+13 silly cache add   scope: null,
+13 silly cache add   name: 'blpapi',
+13 silly cache add   rawSpec: 'latest',
+13 silly cache add   spec: 'latest',
+13 silly cache add   type: 'tag' }
+14 verbose addNamed blpapi@latest
+15 silly addNamed semver.valid null
+16 silly addNamed semver.validRange null
+17 info addNameTag [ 'blpapi', 'latest' ]
+18 verbose mapToRegistry name blpapi
+19 verbose mapToRegistry uri https://registry.npmjs.org/blpapi
+20 verbose addNameTag registry:https://registry.npmjs.org/blpapi not in flight; fetching
+21 verbose request on initialization, where is /blpapi
+22 verbose request after pass 1, where is /blpapi
+23 verbose request url raw /blpapi
+24 verbose request resolving registry [ 'https://registry.npmjs.org/', './blpapi' ]
+25 verbose request after pass 2, where is https://registry.npmjs.org/blpapi
+26 verbose request no auth needed
+27 info attempt registry request try #1 at 10:24:39
+28 verbose request id 3e2e5f7517a3ffa6
+29 verbose etag "IQMKWAN6WR0WUSLKLSPJ8PVD"
+30 http request GET https://registry.npmjs.org/blpapi
+31 http 304 https://registry.npmjs.org/blpapi
+32 silly registry.get cb [ 304,
+32 silly registry.get   { date: 'Sat, 18 Oct 2014 15:24:41 GMT',
+32 silly registry.get     server: 'Apache',
+32 silly registry.get     via: '1.1 varnish',
+32 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 15:24:41 GMT',
+32 silly registry.get     'cache-control': 'max-age=60',
+32 silly registry.get     etag: '"IQMKWAN6WR0WUSLKLSPJ8PVD"',
+32 silly registry.get     age: '0',
+32 silly registry.get     'x-served-by': 'cache-dfw1821-DFW',
+32 silly registry.get     'x-cache': 'MISS',
+32 silly registry.get     'x-cache-hits': '0',
+32 silly registry.get     'x-timer': 'S1413645881.267176,VS0,VE59',
+32 silly registry.get     vary: 'Accept',
+32 silly registry.get     'content-length': '0',
+32 silly registry.get     'keep-alive': 'timeout=10, max=50',
+32 silly registry.get     connection: 'Keep-Alive' } ]
+33 verbose etag https://registry.npmjs.org/blpapi from cache
+34 silly addNameTag next cb for blpapi with tag latest
+35 verbose addNamed blpapi@0.1.10
+36 silly addNamed semver.valid 0.1.10
+37 silly addNamed semver.validRange 0.1.10
+38 silly cache afterAdd blpapi@0.1.10
+39 verbose afterAdd /home/xie/.npm/blpapi/0.1.10/package/package.json not in flight; writing
+40 verbose afterAdd /home/xie/.npm/blpapi/0.1.10/package/package.json written
+41 silly install resolved [ { name: 'blpapi',
+41 silly install resolved     version: '0.1.10',
+41 silly install resolved     main: './blpapi.js',
+41 silly install resolved     description: 'Bloomberg Open API (BLPAPI) binding for node.js',
+41 silly install resolved     os: [ 'linux', 'win32', 'darwin' ],
+41 silly install resolved     cpu: [ 'x64', 'ia32' ],
+41 silly install resolved     scripts: { install: 'node-gyp configure build' },
+41 silly install resolved     repository:
+41 silly install resolved      { type: 'git',
+41 silly install resolved        url: 'https://github.com/bloomberg/blpapi-node.git' },
+41 silly install resolved     bugs:
+41 silly install resolved      { url: 'https://github.com/bloomberg/blpapi-node/issues',
+41 silly install resolved        email: 'open-tech@bloomberg.net' },
+41 silly install resolved     maintainers: [ [Object] ],
+41 silly install resolved     keywords:
+41 silly install resolved      [ 'finance',
+41 silly install resolved        'stocks',
+41 silly install resolved        'stock',
+41 silly install resolved        'quotes',
+41 silly install resolved        'tick',
+41 silly install resolved        'realtime',
+41 silly install resolved        'market' ],
+41 silly install resolved     license: 'MIT',
+41 silly install resolved     engines: { node: '>=0.6' },
+41 silly install resolved     homepage: 'https://github.com/bloomberg/blpapi-node',
+41 silly install resolved     _id: 'blpapi@0.1.10',
+41 silly install resolved     dist:
+41 silly install resolved      { shasum: 'ebb738fc5362e285652e1eb2f75b82478e6dde8b',
+41 silly install resolved        tarball: 'http://registry.npmjs.org/blpapi/-/blpapi-0.1.10.tgz' },
+41 silly install resolved     _from: 'blpapi@latest',
+41 silly install resolved     _npmVersion: '1.4.6',
+41 silly install resolved     _npmUser: { name: 'apaprocki', email: 'andrew@ishiboo.com' },
+41 silly install resolved     directories: {},
+41 silly install resolved     _shasum: 'ebb738fc5362e285652e1eb2f75b82478e6dde8b',
+41 silly install resolved     _resolved: 'https://registry.npmjs.org/blpapi/-/blpapi-0.1.10.tgz',
+41 silly install resolved     readme: 'ERROR: No README data found!' } ]
+42 info install blpapi@0.1.10 into /home/xie/Documents/ShowMeTheMoney
+43 info installOne blpapi@0.1.10
+44 verbose installOne of blpapi to /home/xie/Documents/ShowMeTheMoney not in flight; installing
+45 verbose lock using /home/xie/.npm/_locks/blpapi-8d96cb99e42a6493.lock for /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+46 silly install write writing blpapi 0.1.10 to /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+47 silly cache addNamed cb blpapi@0.1.10
+48 verbose unbuild node_modules/blpapi
+49 verbose gentlyRm vacuuming /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+50 verbose tar unpack /home/xie/.npm/blpapi/0.1.10/package.tgz
+51 verbose tar unpacking to /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+52 verbose gentlyRm vacuuming /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+53 silly gunzTarPerm modes [ '755', '644' ]
+54 silly gunzTarPerm extractEntry package.json
+55 silly gunzTarPerm extractEntry README.md
+56 silly gunzTarPerm extractEntry LICENSE
+57 silly gunzTarPerm extractEntry blpapi.js
+58 silly gunzTarPerm extractEntry .travis.yml
+59 silly gunzTarPerm extractEntry binding.gyp
+60 silly gunzTarPerm extractEntry blpapijs.cpp
+61 silly gunzTarPerm extractEntry deps/blpapi/LICENSE
+62 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_logging.h
+63 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_abstractsession.h
+64 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_constant.h
+65 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_correlationid.h
+66 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_datetime.h
+67 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_defs.h
+68 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_diagnosticsutil.h
+69 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_dispatchtbl.h
+70 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_element.h
+71 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_error.h
+72 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_event.h
+73 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_eventdispatcher.h
+74 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_eventformatter.h
+75 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_exception.h
+76 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_identity.h
+77 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_call.h
+78 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_message.h
+79 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_name.h
+80 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_providersession.h
+81 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_request.h
+82 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_resolutionlist.h
+83 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_schema.h
+84 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_service.h
+85 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_session.h
+86 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_sessionoptions.h
+87 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_streamproxy.h
+88 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_subscriptionlist.h
+89 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_topic.h
+90 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_topiclist.h
+91 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_types.h
+92 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_versioninfo.h
+93 silly gunzTarPerm extractEntry deps/blpapi/linux/libblpapi3_32.so
+94 silly gunzTarPerm extractEntry deps/blpapi/linux/libblpapi3_64.so
+95 silly gunzTarPerm extractEntry deps/blpapi/osx/libblpapi3_32.so
+96 silly gunzTarPerm extractEntry deps/blpapi/osx/libblpapi3_64.so
+97 silly gunzTarPerm extractEntry deps/blpapi/win/blpapi3_32.lib
+98 silly gunzTarPerm extractEntry deps/blpapi/win/blpapi3_64.lib
+99 silly gunzTarPerm extractEntry examples/AuthorizationApplication.js
+100 silly gunzTarPerm extractEntry examples/FieldSearchRequest.js
+101 silly gunzTarPerm extractEntry examples/HistoricalDataRequest.js
+102 silly gunzTarPerm extractEntry examples/IntradayBarRequest.js
+103 silly gunzTarPerm extractEntry examples/Console.js
+104 silly gunzTarPerm extractEntry examples/MarketBarSubscription.js
+105 silly gunzTarPerm extractEntry examples/MarketSubUnsubscription.js
+106 silly gunzTarPerm extractEntry examples/MarketSubscription.js
+107 silly gunzTarPerm extractEntry examples/MarketVwapSubscription.js
+108 silly gunzTarPerm extractEntry examples/OptionChain.js
+109 silly gunzTarPerm extractEntry examples/IntradayTickRequest.js
+110 info preinstall blpapi@0.1.10
+111 silly install resolved []
+112 verbose about to build /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+113 info build /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+114 verbose linkStuff [ false,
+114 verbose linkStuff   false,
+114 verbose linkStuff   false,
+114 verbose linkStuff   '/home/xie/Documents/ShowMeTheMoney/node_modules' ]
+115 info linkStuff blpapi@0.1.10
+116 verbose linkBins blpapi@0.1.10
+117 verbose linkMans blpapi@0.1.10
+118 verbose rebuildBundles blpapi@0.1.10
+119 info install blpapi@0.1.10
+120 verbose unsafe-perm in lifecycle false
+121 info blpapi@0.1.10 Failed to exec install script
+122 verbose unlock done using /home/xie/.npm/_locks/blpapi-8d96cb99e42a6493.lock for /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+123 verbose stack Error: blpapi@0.1.10 install: `node-gyp configure build`
+123 verbose stack Exit status 1
+123 verbose stack     at ChildProcess.<anonymous> (/usr/lib/node_modules/npm/lib/utils/lifecycle.js:212:16)
+123 verbose stack     at ChildProcess.emit (events.js:98:17)
+123 verbose stack     at maybeClose (child_process.js:756:16)
+123 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:823:5)
+124 verbose pkgid blpapi@0.1.10
+125 verbose cwd /home/xie/Documents/ShowMeTheMoney
+126 error Linux 3.8.11
+127 error argv "node" "/usr/bin/npm" "install" "blpapi"
+128 error node v0.10.32
+129 error npm  v2.1.4
+130 error code ELIFECYCLE
+131 error blpapi@0.1.10 install: `node-gyp configure build`
+131 error Exit status 1
+132 error Failed at the blpapi@0.1.10 install script.
+132 error This is most likely a problem with the blpapi package,
+132 error not with npm itself.
+132 error Tell the author that this fails on your system:
+132 error     node-gyp configure build
+132 error You can get their info via:
+132 error     npm owner ls blpapi
+132 error There is likely additional logging output above.
+133 verbose exit [ 1, true ]
+134 verbose unbuild node_modules/blpapi
+135 info preuninstall blpapi@0.1.10
+136 info uninstall blpapi@0.1.10
+137 verbose unbuild rmStuff blpapi@0.1.10 from /home/xie/Documents/ShowMeTheMoney/node_modules
+138 info postuninstall blpapi@0.1.10
+139 verbose gentlyRm vacuuming /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+140 silly gentlyRm purging /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+141 silly gentlyRm quitting because other entries in /home/xie/Documents/ShowMeTheMoney/node_modules

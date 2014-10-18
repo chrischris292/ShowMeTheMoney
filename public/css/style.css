@@ -359,9 +359,8 @@ blockquote small {
 }
 
 .drawer-close:hover {
-    opacity: 0.7
+    opacity: 0.7;
 }
-
 
 .main-search {
     height: 36px;
@@ -369,9 +368,10 @@ blockquote small {
     width: 95%;
     font-size: 16px;
     background-color: transparent;
-    background-image: url("images/.main-search.png");
+    background-image: url("../images/search.png");
     background-repeat: no-repeat;
     background-position: 0 4px;
+    background-size: 25px;
     padding-left: 32px;
 }
 
