@@ -2322,4 +2322,12 @@ a.list-group-item.active > .badge,
     }
 }
 
+.loading {
+    position: absolute;
+    background-image: url(../images/greenish.jpg);
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    z-index: 999;
+}
 

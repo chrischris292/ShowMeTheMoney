@@ -16,7 +16,4 @@ function theTime() {
   return hh_mm;
 }
 
-$(document).ready(function() {
-  var time = theTime();
-  $('#time').text(time);
-});
+$('#time').text(theTime());
