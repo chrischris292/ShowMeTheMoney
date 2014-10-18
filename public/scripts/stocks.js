@@ -8,6 +8,7 @@ $.post("/stocks",
 
 	$.get("/sortStocks",function(sortedData){
 		populateTopSentiment(sortedData)
+		createGraph(unsortedData);
 	})
     //alert("Data: " + data + "\nStatus: " + status);
   });
@@ -31,75 +32,94 @@ function populatetopNews(unsortedData){
 		var newsDate = temp.date;
 		$("#newsFeedList").append("<li class = 'm-b-10'><span class = 'itemTitle'><a href = '"+url +"'>"+ title+"</a></span><small class = 'itemDate text-muted m-l-10'>"+newsDate + "</small></li>")
 	}
-		var data = {
-		    labels: ["January", "February", "March", "April", "May", "June", "July"],
-		    datasets: [
-		        {
-		            label: "My First dataset",
-		            fillColor: "rwhit",
-		            strokeColor: "rgba(220,220,220,1)",
-		            pointColor: "rgba(220,220,220,1)",
-		            pointStrokeColor: "#fff",
-		            pointHighlightFill: "#fff",
-		            pointHighlightStroke: "rgba(220,220,220,1)",
-		            data: [65, 59, 80, 81, 56, 55, 40]
-		        },
-		        {
-		            label: "My Second dataset",
-		            fillColor: "rgba(151,187,205,0.2)",
-		            strokeColor: "rgba(151,187,205,1)",
-		            pointColor: "rgba(151,187,205,1)",
-		            pointStrokeColor: "#fff",
-		            pointHighlightFill: "#fff",
-		            pointHighlightStroke: "rgba(151,187,205,1)",
-		            data: [28, 48, 40, 19, 86, 27, 90]
-		        }
-		    ]
-		};
-		var options = {
-			    ///Boolean - Whether grid lines are shown across the chart
-			    scaleShowGridLines : true,
+}
 
-			    //String - Colour of the grid lines
-			    scaleGridLineColor : "rgba(0,0,0,.05)",
+function createGraph(unsortedData){
 
-			    //Number - Width of the grid lines
-			    scaleGridLineWidth : 1,
+// Set the dimensions of the canvas / graph
+var	margin = {top: 30, right: 20, bottom: 30, left: 50},
+	width = 600 - margin.left - margin.right,
+	height = 270 - margin.top - margin.bottom;
 
-			    //Boolean - Whether the line is curved between points
-			    bezierCurve : true,
+// Parse the date / time
+var	parseDate = d3.time.format("%d-%b-%y").parse;
+var formatTime = d3.time.format("%e %B");// Format tooltip date / time
 
-			    //Number - Tension of the bezier curve between points
-			    bezierCurveTension : 0.4,
+// Set the ranges
+var	x = d3.time.scale().range([0, width]);
+var	y = d3.scale.linear().range([height, 0]);
 
-			    //Boolean - Whether to show a dot for each point
-			    pointDot : true,
+// Define the axes
+var	xAxis = d3.svg.axis().scale(x)
+	.orient("bottom").ticks(5);
 
-			    //Number - Radius of each point dot in pixels
-			    pointDotRadius : 4,
+var	yAxis = d3.svg.axis().scale(y)
+	.orient("left").ticks(5);
 
-			    //Number - Pixel width of point dot stroke
-			    pointDotStrokeWidth : 1,
+// Define the line
+var	valueline = d3.svg.line()
+	.x(function(d) { return x(d.date); })
+	.y(function(d) { return y(d.close); });
 
-			    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-			    pointHitDetectionRadius : 20,
+// Define 'div' for tooltips
+var div = d3.select("body")
+	.append("div")  // declare the tooltip div 
+	.attr("class", "tooltip")              // apply the 'tooltip' class
+	.style("opacity", 0);                  // set the opacity to nil
 
-			    //Boolean - Whether to show a stroke for datasets
-			    datasetStroke : true,
+// Adds the svg canvas
+var	svg = d3.select("body")
+	.append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+	.append("g")
+		.attr("transform", 
+		      "translate(" + margin.left + "," + margin.top + ")");
 
-			    //Number - Pixel width of dataset stroke
-			    datasetStrokeWidth : 2,
+	// Scale the range of the data
+	x.domain(d3.extent(unsortedData, function(d) { return d.date; }));
+	y.domain([0, d3.max(unsortedData, function(d) { return d.close; })]);
 
-			    //Boolean - Whether to fill the dataset with a colour
-			    datasetFill : true,
+	// Add the valueline path.
+	svg.append("path")		
+		.attr("class", "line")
+		.attr("d", valueline(data));
 
-			    //String - A legend template
-			    legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%='datasets[i].lineColor'%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
+	// draw the scatterplot
+	svg.selectAll("dot")									
+		.data(unsortedData)											
+	.enter().append("circle")								
+		.attr("r", 5)	
+		.attr("cx", function(d) { return x(d.date); })		 
+		.attr("cy", function(d) { return y(d.score); })
+	// Tooltip stuff after this
+	    .on("mouseover", function(d) {		
+            div.transition()
+				.duration(500)	
+				.style("opacity", 0);
+			div.transition()
+				.duration(200)	
+				.style("opacity", .9);	
+			div	.html(
+				'<a href= "http://google.com">' + // The first <a> tag
+				formatTime(d.date) +
+				"</a>" +                          // closing </a> tag
+				"<br/>"  + d.close)	 
+				.style("left", (d3.event.pageX) + "px")			 
+				.style("top", (d3.event.pageY - 28) + "px");
+			});
 
-			};
+	// Add the X Axis
+	svg.append("g")	
+		.attr("class", "x axis")
+		.attr("transform", "translate(0," + height + ")")
+		.call(xAxis);
 
-	var ctx = document.getElementById("myChart").getContext("2d");
-	var myLineChart = new Chart(ctx).Line(data);;
+	// Add the Y Axis
+	svg.append("g")	
+		.attr("class", "y axis")
+		.call(yAxis);
+
 }
 
 function populateTopSentiment(sortedData){
