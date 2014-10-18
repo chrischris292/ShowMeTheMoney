@@ -104,7 +104,8 @@ h2{
 }
 #username-text
 {
-  margin-left: 110px;
+  margin-top: 10px;
+  margin-left: 90px;
 }
 #username 
 {
@@ -118,7 +119,7 @@ h2{
   padding-bottom: 0;
   margin-bottom: 20px;
   height: 0;
-  margin-left: 110px;
+  margin-left: 90px;
 }
 #password
 {
@@ -129,21 +130,19 @@ h2{
 }
 #forgot-password
 {
-  padding-left:30px; 
+  margin: 0 auto; 
   font-weight: 300;
-  padding-bottom: 0;
+  text-align: center;
 }
-h3
-{
-  padding-bottom: 0;
-  margin-bottom: 0;
-  margin-left: 132px;
+#forgot-password:hover {
+  cursor: pointer;
+  opacity: 0.5;
 }
 #submit-button
 {
   margin-left: 163px;
   margin-top: 20px;
-  padding-left:30px;
+  padding-left: 30px;
   padding-top: 13px;
   background-color: darkorange;
   opacity: 0.7;
