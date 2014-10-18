@@ -1,5 +1,6 @@
 // Setup basic express server
 var express = require('express');
+var get_data = require("./data/get_data.js");
 var analyze = require('Sentimental').analyze,
     positivity = require('Sentimental').positivity,
     negativity = require('Sentimental').negativity;
@@ -15,11 +16,12 @@ server.listen(port, function () {
 
 // Routing
 app.use(express.static(__dirname + '/public'));
-
 app.post('/stocks', function(req, res){
 	var stockTicker = req.body.stockTicker;
 	console.log(stockTicker);
-	res.send(stockTicker);
+
+	var temp = get_data.getData()
+	res.send(temp);
 })
 
 

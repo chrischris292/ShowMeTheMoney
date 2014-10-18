@@ -12,15 +12,15 @@ var fs = require("fs");
 var search = "tesla";
 var results = [];
 
-function Article(title, date, description, url) {
+Article = function(title, date, description, url) {
 	this.title = title;
 	this.date = date;
 	this.description = description;
 	this.url = url;
 }
 
-function getData() {
-	var query = "https://news.google.com/news/feeds?q=" + search + "&output=rss&num=100";
+module.exports.getData = function() {
+	var query = "https://news.google.com/news/feeds?q=" + search + "&output=rss&num=2";
 	feed(query, function(err, articles) {
 		if (err) {
 			throw err;
@@ -33,9 +33,9 @@ function getData() {
 
 			results.push(new Article(title, date, description, url));
 		}
-		console.log(results);
+		console.log(results)
 		return results;
 	});
 }
 
-getData();
+//getData();
