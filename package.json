@@ -9,6 +9,10 @@
     "request": "latest",
     "jquery": "latest",
     "fs": "latest",
+<<<<<<< HEAD
+    "Sentimental": "latest"
+=======
     "feed-read": "latest"
+>>>>>>> FETCH_HEAD
   }
 }
