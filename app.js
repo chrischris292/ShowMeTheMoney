@@ -29,13 +29,15 @@ app.use(express.static(__dirname + '/public'));
 
 
 var results =[];
-
+var resultSorted = [];
 app.post('/stocks', function(req, res){
-	var query = "https://news.google.com/news/feeds?q="+req.body.stockTicker+"&output=rss&num=100";
+	var query = "https://news.google.com/news/feeds?q="+req.body.stockTicker+"&output=rss&num=100&scoring=n";
 	feed(query, function(err, articles) {
 		if (err) {
 			throw err;
-		}
+		}	
+		results = [];
+		resultSorted = [];
 		for (var i = 0; i < articles.length; i++) {
 			var title = articles[i].title;
 			var date = articles[i].published;
@@ -44,7 +46,9 @@ app.post('/stocks', function(req, res){
 			var sentiment = analyze(description); //Score: -6, Comparative:-1.5
 			var score = sentiment.score;
 			results.push(new Article(title, date, description, url, score));
+			resultSorted.push(new Article(title, date, description, url, score));
 		}
+		console.log(results.length)
 		res.send(results);
 	})
 })
@@ -52,16 +56,17 @@ app.post('/stocks', function(req, res){
 
 app.get("/sortStocks",function(req,res){
 	sortResults("score",true);
-	res.send(results);
+	console.log(resultSorted.length)
+
+	res.send(resultSorted);
 })
 
 
 function sortResults(prop, asc) {
-    results = results.sort(function(a, b) {
+    resultSorted = resultSorted.sort(function(a, b) {
         if (asc) return (a[prop] > b[prop]) ? 1 : ((a[prop] < b[prop]) ? -1 : 0);
         else return (b[prop] > a[prop]) ? 1 : ((b[prop] < a[prop]) ? -1 : 0);
     });
-    console.log(results);
 }
 
 Article = function(title, date, description, url, score) {

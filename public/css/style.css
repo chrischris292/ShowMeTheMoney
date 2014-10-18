@@ -851,6 +851,7 @@ hr {
     color: #FFF;
     font-size: 23px;
     text-shadow: none;
+    margin-top:11px;
 }
 .positive{
         background: rgba(44, 206, 4, 0.74);
