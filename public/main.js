@@ -9,6 +9,10 @@ function theTime() {
   var hh_mm = newDate.timeNow();
   if (newDate.getHours() >= 12) {
     hh_mm += " PM";
+    if (newDate.getHours() > 12) {
+      hh_mm = hh_mm.slice(2, hh_mm.length);
+      hh_mm = (newDate.getHours() - 12) + hh_mm;
+    }
   }
   else {
     hh_mm += " AM";

@@ -6,6 +6,7 @@
   "author": "Chris Chan, Tushig Ochirhkuyag, and William Xie",
   "dependencies": {
     "blpapi": "latest",
+    "express": "latest",
     "cheerio": "latest",
     "request": "latest",
     "jquery": "latest",
