@@ -41,7 +41,7 @@ app.post('/stocks', function(req, res){
 			var date = articles[i].published;
 			var description = articles[i].content.replace(/<(?:.|\n)*?>/gm, '');
 			var url = articles[i].link;
-			var sentiment = analyze(description); //Score: -6, Comparative:-1.5
+			var sentiment = analyze(description); 
 			var score = sentiment.score;
 			results.push(new Article(title, date, description, url, score));
 			resultSorted.push(new Article(title, date, description, url, score));
@@ -70,6 +70,28 @@ app.post('/company', function(req, res) {
 	});
 })
 
+app.post("/ceo", function(req, res) {
+	var query = "https://news.google.com/news/feeds?q=" + req.body.ceoName + "&output=rss&num=100&scoring=n";
+	feed(query, function(err, articles) {
+		if (err) {
+			throw err;
+		}
+		var result = [];
+		for (var i = 0; i < articles.length; i++) {
+			var title = articles[i].title;
+			var date = articles[i].published;
+			var description = articles[i].content.replace(/<(?:.|\n)*?>/gm, '');
+			var url = articles[i].link;
+			var sentiment = analyze(description);
+			var score = sentiment.score;
+		}
+		res.send(results);
+	});
+});
+app.get("/sortCeo",function(req,res){
+	sortResults("score",true);
+	res.send(resultSorted);
+})
 
 function sortResults(prop, asc) {
     resultSorted = resultSorted.sort(function(a, b) {
@@ -92,3 +114,4 @@ Glass = function(name, ceo, logo, homePage) {
 	this.logo = logo;
 	this.homePage = homePage;
 }
+
