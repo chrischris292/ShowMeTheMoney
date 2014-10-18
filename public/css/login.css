@@ -1,0 +1,126 @@
+header h1
+{
+  float:left;
+  font-size: 50px;
+  font-weight: 300;
+  margin:20px 0 0 0;
+  padding:50px 0 0 0;
+  width:100%;
+  color: white;
+  text-align: center;
+}
+body {
+    font-family: 'open-sans-light', sans-serif;
+    font-size: 12px;
+    background-size: 100%;
+}
+h2{
+    font-family: 'open-sans-light', sans-serif;
+    font-weight: normal;
+}
+
+.tile-title {
+    font-size: 24px;
+    display: inline-block;
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom:0px;
+    width: 100%;
+    padding: 7px 0px 7px;
+}
+.tile-title{
+    background: rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+    font-weight: 300;
+    color:white;
+}
+.login-box
+{
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFF;
+  font-family: "open-sans-light",sans-serif;
+  font-size: 12px;
+  line-height: 17.5px;
+  padding-bottom: 70px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  width:100%;
+  background: rgba(255, 255, 255, 0.1);
+}
+.container{
+  width:450px;
+  margin:auto;
+}
+#username-text
+{
+  margin-left: 110px;
+}
+#username 
+{
+  text-align: center;
+  font-size: 25px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+#password-text
+{
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  height: 0;
+  margin-left: 110px;
+}
+#password
+{
+  text-align: center;
+  font-size: 25px;
+  padding-top: 0;
+  padding-bottom: 10px;
+}
+#forgot-password
+{
+  padding-left:30px; 
+  font-weight: 300;
+  padding-bottom: 0;
+}
+h3
+{
+  padding-bottom: 0;
+  margin-bottom: 0;
+  margin-left: 132px;
+}
+#submit-button
+{
+  margin-left: 163px;
+  margin-top: 20px;
+  padding-left:30px;
+  padding-top: 13px;
+  background-color: darkorange;
+  opacity: 0.7;
+  width:80px;
+  height: 30px;
+}
+#submit-button:hover
+{
+  background-color: darkorange;
+  opacity: 1.0;
+  cursor:pointer;
+}
+#signup-button
+{
+  margin: 0 auto;
+  font-weight: 300;
+  padding-bottom: 0;
+}
+input
+{
+  height:30px;
+}
+::selection {
+    background: rgba(255, 255, 255, 0.1);
+}
