@@ -2,7 +2,6 @@
 var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
-var io = require('../..')(server);
 var port = process.env.PORT || 3000;
 
 server.listen(port, function () {
@@ -26,6 +25,7 @@ var securities = [
 ];
 
 session.on('ServiceOpened', function(m) {
+      console.log("Session opened")
     if (m.correlations[0].value == service_id) {
         session.subscribe(securities);
     }
