@@ -12,68 +12,33 @@ server.listen(port, function () {
 // Routing
 app.use(express.static(__dirname + '/public'));
 
-// Chatroom
+var blpapi = require('blpapi');
+var session = new blpapi.Session({ host: '127.0.0.1', port: 8194 });
 
-// usernames which are currently connected to the chat
-var usernames = {};
-var numUsers = 0;
+session.on('SessionStarted', function(m) {
+    console.log("Session Started")
+});
 
-io.on('connection', function (socket) {
-  var addedUser = false;
 
-  // when the client emits 'new message', this listens and executes
-  socket.on('new message', function (data) {
-    // we tell the client to execute 'new message'
-    socket.broadcast.emit('new message', {
-      username: socket.username,
-      message: data
-    });
-  });
+var securities = [
+    { security: 'AAPL US Equity', correlation: 0, fields: ['LAST_TRADE'] },
+    { security: 'GOOG US Equity', correlation: 1, fields: ['LAST_TRADE'] }
+];
 
-  // when the client emits 'add user', this listens and executes
-  socket.on('add user', function (username) {
-    // we store the username in the socket session for this client
-    socket.username = username;
-    // add the client's username to the global list
-    usernames[username] = username;
-    ++numUsers;
-    addedUser = true;
-    socket.emit('login', {
-      numUsers: numUsers
-    });
-    // echo globally (all clients) that a person has connected
-    socket.broadcast.emit('user joined', {
-      username: socket.username,
-      numUsers: numUsers
-    });
-  });
-
-  // when the client emits 'typing', we broadcast it to others
-  socket.on('typing', function () {
-    socket.broadcast.emit('typing', {
-      username: socket.username
-    });
-  });
-
-  // when the client emits 'stop typing', we broadcast it to others
-  socket.on('stop typing', function () {
-    socket.broadcast.emit('stop typing', {
-      username: socket.username
-    });
-  });
-
-  // when the user disconnects.. perform this
-  socket.on('disconnect', function () {
-    // remove the username from global usernames list
-    if (addedUser) {
-      delete usernames[socket.username];
-      --numUsers;
-
-      // echo globally that this client has left
-      socket.broadcast.emit('user left', {
-        username: socket.username,
-        numUsers: numUsers
-      });
+session.on('ServiceOpened', function(m) {
+    if (m.correlations[0].value == service_id) {
+        session.subscribe(securities);
     }
-  });
+});
+
+session.on('MarketDataEvents', function(m) {
+    if (m.data.hasOwnProperty('LAST_TRADE')) {
+        console.log(securities[m.correlations[0].value].security,
+                    'LAST_TRADE', m.data.LAST_TRADE);
+        // outputs:
+        // AAPL US Equity LAST_TRADE 600.00
+        // AAPL US Equity LAST_TRADE 601.00
+        // GOOG US Equity LAST_TRADE 650.00
+        // ...
+    }
 });
