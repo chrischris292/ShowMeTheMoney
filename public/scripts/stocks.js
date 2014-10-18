@@ -1,10 +1,11 @@
 
 $.post("/stocks",
   {
-    stockTicker:"aapl"
+    stockTicker:"amd"
   },
-  function(data,status){
-  	console.log(data)
+  function(unsortedData,status){
+  	console.log(unsortedData)
+	populatetopNews(unsortedData)
 
 	$.get("/sortStocks",function(sortedData){
 		console.log(sortedData);
@@ -14,6 +15,16 @@ $.post("/stocks",
   });
 
 
+function populatetopNews(unsortedData){
+	for(i = 0;i<8;i++)
+	{
+		var temp = unsortedData[i];
+		var title = temp.title;
+		var url = temp.url;
+		var newsDate = temp.date;
+		$("#newsFeedList").append("<li class = 'm-b-10'><span class = 'itemTitle'><a href = '"+url +"'>"+ title+"</a></span><small class = 'itemDate text-muted m-l-10'>"+newsDate + "</small></li>")
+	}
+}
 
 function populateTopSentiment(sortedData){
 	for( i = 0;i<5;i++)
