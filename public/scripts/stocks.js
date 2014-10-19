@@ -40,7 +40,7 @@ $.post("/ceo",
 		})
 	});
 
-d$.post("/stocksBloomberg",
+$.post("/stocksBloomberg",
 	{
 		stockTicker: "GOOG"
 	},
@@ -97,7 +97,7 @@ function createGraph(unsortedData, results) {
 		}
 	}
 
-	//
+	console.log(results);
 
 }
 
@@ -224,6 +224,7 @@ function populateTopSentiment(sortedData){
 }
 
 function populateCompanyData(company) {
+	console.log(company)
 	var name = company.name;
 	var ceo = company.ceo;
 	var logo_link = company.logo;

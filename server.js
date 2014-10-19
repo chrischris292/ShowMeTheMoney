@@ -63,6 +63,9 @@ app.get("/sortStocks",function(req,res){
 })
 
 app.post('/company', function(req, res) {
+	console.log(req.body.stockName)
+	if(req.body.stockName === undefined)
+		return;
 	var query = "http://api.glassdoor.com/api/api.htm?t.p=26106&t.k=g3q6WWopG8O&userip=0.0.0.0&useragent=&format=json&v=1&action=employers&q=" + req.body.stockName;
 	request(query, function(error, response, data) {
 		if (error) {
