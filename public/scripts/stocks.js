@@ -212,7 +212,7 @@ function createGraph(unsortedData, results) {
     labels: ls,
     datasets: [
         {
-            label: "My First dataset",
+            label: "Volume Data Set",
             fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "#34495e",
             pointColor: "rgba(220,220,220,1)",
@@ -222,7 +222,7 @@ function createGraph(unsortedData, results) {
             data: d1
         },
         {
-            label: "My Second dataset",
+            label: "Sentiment Score Data Set",
             fillColor: "rgba(151,187,205,0.2)",
             strokeColor: "#2ecc71",
             pointColor: "rgba(220,220,220,1)",
@@ -374,7 +374,7 @@ function populateCompanyData(company) {
 	else if (name === "Google") {
 		$('.m-0').text("GOOG");
 	}
-	else if (name === "Tesla") {
+	else if (name === "Tesla Motors") {
 		$('.m-0').text("TSLA");
 	}
 	else if (name === "Apple") {
@@ -385,5 +385,5 @@ function populateCompanyData(company) {
 	$(".profile-pic").click(function() {
 		window.location.href = homePage;
 	});
-	$('#myChart').empty();
+    $('#myChart').replaceWith('<canvas id="myChart" width="880" height="400"></canvas>');
 }
