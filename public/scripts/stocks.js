@@ -1,4 +1,3 @@
-
 $.post("/stocks",
   {
     stockTicker:"GOOG"
@@ -8,7 +7,15 @@ $.post("/stocks",
 
 	$.get("/sortStocks",function(sortedData){
 		populateTopSentiment(sortedData)
-		createGraph(unsortedData);
+		$.post("/stocksBloomberg",
+			{
+				stockTicker: "GOOG"
+			},
+			function(results, status) {
+				//console.log("Bloomberg Object")
+				//console.log(results[1]);
+				createGraph(unsortedData, results);
+			});
 	})
   });
 
@@ -33,13 +40,14 @@ $.post("/ceo",
 		})
 	});
 
-$.post("/stocksBloomberg",
+d$.post("/stocksBloomberg",
 	{
 		stockTicker: "GOOG"
 	},
 	function(results, status) {
-		console.log("Bloomberg Object")
-		console.log(results[1]);
+		//console.log("Bloomberg Object")
+		//console.log(results[1]);
+		return results[1];
 	});
 
 $.post("/company",
@@ -63,56 +71,92 @@ function populateTopNews(unsortedData){
 	}
 }
 
-function createGraph(unsortedData){
+Day = function(date, score) {
+	this.date = date;
+	this.score = score;
+}	
 
-// Set the dimensions of the canvas / graph
-var	margin = {top: 30, right: 20, bottom: 30, left: 50},
-	width = 600 - margin.left - margin.right,
-	height = 270 - margin.top - margin.bottom;
 
-// Parse the date / time
-var	parseDate = d3.time.format("%d-%b-%y").parse;
-var formatTime = d3.time.format("%e %B");// Format tooltip date / time
+function createGraph(unsortedData, results) {
+	console.log(results);
+	// Get the aggregated scores for the scraped days
+	var ctr = 0;
+	unsortedData = unsortedData.reverse();
+	var last = unsortedData[0].date.slice(0, 10);
+	var d = [];
+	d.push(new Day(last, unsortedData[0].score));
+	for (var i = 1; i < unsortedData.length; i++) {
+		var date = unsortedData[i].date.slice(0, 10);
+		if (date <= last) {
+			d[ctr].score += unsortedData[i].score;
+		}
+		else {
+			last = d[ctr];
+			d.push(new Day(date, unsortedData[i].score));
+			ctr++;
+		}
+	}
 
-// Set the ranges
-var	x = d3.time.scale().range([0, width]);
-var	y = d3.scale.linear().range([height, 0]);
+	//
 
-// Define the axes
-var	xAxis = d3.svg.axis().scale(x)
-	.orient("bottom").ticks(5);
+}
 
-var	yAxis = d3.svg.axis().scale(y)
-	.orient("left").ticks(5);
+	/*
+	// Set the dimensions of the canvas / graph
+	var	margin = {top: 30, right: 20, bottom: 30, left: 50},
+		width = 600 - margin.left - margin.right,
+		height = 270 - margin.top - margin.bottom;
 
-// Define the line
-var	valueline = d3.svg.line()
-	.x(function(d) { return x(d.date); })
-	.y(function(d) { return y(d.close); });
+	// Parse the date / time
+	var	parseDate = d3.time.format("%d-%b-%y").parse;
+	var formatTime = d3.time.format("%e %B");// Format tooltip date / time
 
-// Define 'div' for tooltips
-var div = d3.select("body")
-	.append("div")  // declare the tooltip div 
-	.attr("class", "tooltip")              // apply the 'tooltip' class
-	.style("opacity", 0);                  // set the opacity to nil
+	// Set the ranges
+	var	x = d3.time.scale().range([0, width]);
+	var	y = d3.scale.linear().range([height, 0]);
 
-// Adds the svg canvas
-var	svg = d3.select("body")
-	.append("svg")
-		.attr("width", width + margin.left + margin.right)
-		.attr("height", height + margin.top + margin.bottom)
-	.append("g")
-		.attr("transform", 
-		      "translate(" + margin.left + "," + margin.top + ")");
+	// Define the axes
+	var	xAxis = d3.svg.axis().scale(x)
+		.orient("bottom").ticks(5);
+
+	var	yAxis = d3.svg.axis().scale(y)
+		.orient("left").ticks(5);
+
+	// Define the line
+	var	valueline = d3.svg.line()
+		.x(function(d) { return x(d.date); })
+		.y(function(d) { return y(d.score); });
+
+	// Define 'div' for tooltips
+	var div = d3.select("body")
+		.append("div")  // declare the tooltip div 
+		.attr("class", "tooltip")              // apply the 'tooltip' class
+		.style("opacity", 0);                  // set the opacity to nil
+
+	// Adds the svg canvas
+	var	svg = d3.select("body")
+		.append("svg")
+			.attr("width", width + margin.left + margin.right)
+			.attr("height", height + margin.top + margin.bottom)
+		.append("g")
+			.attr("transform", 
+			      "translate(" + margin.left + "," + margin.top + ")");
+
+	d3.json(unsortedData, function(error, data) {
+		unsortedData.forEach(function(d) {
+			d.date = parseDate(d.date);
+			d.score = +d.score;
+		});
+	});
 
 	// Scale the range of the data
 	x.domain(d3.extent(unsortedData, function(d) { return d.date; }));
-	y.domain([0, d3.max(unsortedData, function(d) { return d.close; })]);
+	y.domain([0, d3.max(unsortedData, function(d) { return d.score; })]);
 
 	// Add the valueline path.
 	svg.append("path")		
 		.attr("class", "line")
-		.attr("d", valueline(data));
+		.attr("d", valueline(unsortedData));
 
 	// draw the scatterplot
 	svg.selectAll("dot")									
@@ -133,7 +177,7 @@ var	svg = d3.select("body")
 				'<a href= "http://google.com">' + // The first <a> tag
 				formatTime(d.date) +
 				"</a>" +                          // closing </a> tag
-				"<br/>"  + d.close)	 
+				"<br/>"  + d.score)	 
 				.style("left", (d3.event.pageX) + "px")			 
 				.style("top", (d3.event.pageY - 28) + "px");
 			});
@@ -148,7 +192,9 @@ var	svg = d3.select("body")
 	svg.append("g")	
 		.attr("class", "y axis")
 		.call(yAxis);
-	}
+}
+*/
+
 
 function populateTopSentiment(sortedData){
 	$("#negativeSentiment").empty();
@@ -174,7 +220,6 @@ function populateTopSentiment(sortedData){
 		{
 			$("#positiveSentiment").append("<div class = 'media'><div class = 'pull-right'><div class = 'counts positive'>" + score+ "</div></div><div class = 'media body'><a href = '"+ url+"'<h6>"+ title+ "</h6></a></div></div>")
 		}
-
 	}
 }
 
@@ -201,5 +246,4 @@ function populateCompanyData(company) {
 	$(".profile-pic").click(function() {
 		window.location.href = homePage;
 	});
-
 }
