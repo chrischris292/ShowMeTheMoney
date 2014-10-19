@@ -1,9 +1,10 @@
 
 $.post("/stocks",
   {
-    stockTicker:"amd"
+    stockTicker:"GOOG"
   },
   function(unsortedData,status){
+  	console.log(unsortedData)
 	populateTopNews(unsortedData)
 
 	$.get("/sortStocks",function(sortedData){
@@ -15,8 +16,8 @@ $.post("/stocks",
 
 $.post("/company",
 	{
-		stockName: "AMD",
-		stockTicker: "amd"
+		stockName: "Google",
+		stockTicker: "GOOG"
 	},
 	function(results, status) {
 		populateCompanyData(results);
@@ -33,6 +34,16 @@ $.post("/ceo",
 		//populateTopSentiment(sortedData)
 		})
 	});
+
+
+$.post("/company",
+	{
+		stockTicker: "GOOG"
+	},
+	function(results, status) {
+		populateCompanyData(results);
+	});
+
 
 function populateTopNews(unsortedData){
 	for(i = 0;i<8;i++)

@@ -25,7 +25,6 @@ server.listen(port, function () {
 
 // Routing
 app.use(express.static(__dirname + '/public'));
-
 var results =[];
 var resultSorted = [];
 app.post('/stocks', function(req, res){
