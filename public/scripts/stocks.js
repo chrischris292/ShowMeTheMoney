@@ -3,6 +3,7 @@ $(document).on('keydown', '#inputFormTicker', function(ev) {
 		$('#myChart').empty();
         // Will change backgroundColor to blue as example
 		var temp = $(this).val();  
+		var sname = "";
 		if (temp.toLowerCase() == "amd") {
 			sname = "Advanced Micro Devices";
 		}
