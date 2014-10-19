@@ -2338,3 +2338,8 @@ a.list-group-item.active > .badge,
     width: 120px;
     height: 120px;
 }
+
+#myChart {
+    max-width: 880px;
+    max-height: 400px;
+}

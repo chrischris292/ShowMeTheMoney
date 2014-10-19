@@ -3,7 +3,26 @@ $(document).on('keydown', '#inputFormTicker', function(ev) {
 		$('#myChart').empty();
         // Will change backgroundColor to blue as example
 		var temp = $(this).val();  
-		init(temp,"Advanced Micro Devices");    
+		if (temp.toLowerCase() == "amd") {
+			sname = "Advanced Micro Devices";
+		}
+		else if (temp.toLowerCase() == "tsla") {
+			sname = "Tesla Motors";
+		}
+		else if (temp.toLowerCase() == "goog") {
+			sname = "Google";
+		}
+		else if (temp.toLowerCase() == "ibm") {
+			sname = "IBM";
+		}
+		else if (temp.toLowerCase() == "appl") {
+			sname = "Apple";
+		}
+
+		$('#myCanvas').css("width", "400px");
+		$('#myCanvas').css("height", "880px");
+
+		init(temp, sname);    
         // Avoid form submit
 
         return false;
@@ -171,7 +190,7 @@ function createGraph(unsortedData, results) {
 	    pointDot : true,
 
 	    //Number - Radius of each point dot in pixels
-	    pointDotRadius : 4,
+	    pointDotRadius : 2,
 
 	    //Number - Pixel width of point dot stroke
 	    pointDotStrokeWidth : 1,
@@ -195,7 +214,7 @@ function createGraph(unsortedData, results) {
         {
             label: "My First dataset",
             fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "#f1c40f",
+            strokeColor: "#34495e",
             pointColor: "rgba(220,220,220,1)",
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
@@ -358,9 +377,13 @@ function populateCompanyData(company) {
 	else if (name === "Tesla") {
 		$('.m-0').text("TSLA");
 	}
+	else if (name === "Apple") {
+		$('.m-0').text("APPL");
+	}
 	$("#profile-menu > #sub").text(name);
 	$(".profile-pic").attr("src", logo_link);
 	$(".profile-pic").click(function() {
 		window.location.href = homePage;
 	});
+	$('#myChart').empty();
 }
