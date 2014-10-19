@@ -76,7 +76,6 @@ body {
 .ie9 #sidebar {
     min-height: 100vh;
 }
-
 body, button, input, textarea, select, .btn {
     -webkit-font-smoothing: antialiased;
 }

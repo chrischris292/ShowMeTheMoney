@@ -28,7 +28,7 @@ app.use(express.static(__dirname + '/public'));
 var results =[];
 var resultSorted = [];
 app.post('/stocks', function(req, res){
-	var query = "https://news.google.com/news/feeds?q="+req.body.stockTicker+"&output=rss&num=50&scoring=n";
+	var query = "https://news.google.com/news/feeds?q="+req.body.stockTicker+"&output=rss&num=100&scoring=n";
 	feed(query, function(err, articles) { 
 		if (err) {
 			throw err;

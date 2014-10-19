@@ -55,7 +55,7 @@ var getPrices = function(stockNames, callback) {
 	    
 	    if(m.correlations[0].value === 100) {
 	    	m.data.securityData.forEach(function(item) {
-	    		console.log(item.fieldData.LONG_COMP_NAME)
+	    		//console.log(item.fieldData.LONG_COMP_NAME)
 	    		obj[item.security].name = item.fieldData.LONG_COMP_NAME
 	    	})
 	    }

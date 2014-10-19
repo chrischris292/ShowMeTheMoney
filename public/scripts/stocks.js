@@ -1,63 +1,76 @@
-$.post("/stocks",
-  {
-    stockTicker:"GOOG"
-  },
-  function(unsortedData,status){
-	populateTopNews(unsortedData)
+$(document).on('keydown', '#inputFormTicker', function(ev) {
+    if(ev.which === 13) {
+		$('#myChart').empty();
+        // Will change backgroundColor to blue as example
+		var temp = $(this).val();  
+		init(temp,"Advanced Micro Devices");    
+        // Avoid form submit
 
-	$.get("/sortStocks",function(sortedData){
-		populateTopSentiment(sortedData)
-		$.post("/stocksBloomberg",
-			{
-				stockTicker: "GOOG"
-			},
-			function(results, status) {
-				//console.log("Bloomberg Object")
-				//console.log(results[1]);
-				createGraph(unsortedData, results);
-			});
-	})
-  });
+        return false;
+    }
+});
+init("GOOG", "google")
+function init(stockTickerValue, stockName)
+{
+	$.post("/stocks",
+	  {
+	    stockTicker:stockTickerValue
+	  },
+	  function(unsortedData,status){
+		populateTopNews(unsortedData)
 
-$.post("/company",
-	{
-		stockName: "Google",
-		stockTicker: "GOOG"
-	},
-	function(results, status) {
-		populateCompanyData(results);
-	});
-
-$.post("/ceo", 
-	{
-		ceoName: "Larry Page"
-	},
-	function(unsortedData, status) {
-		//populateTopNews(unsortedData)
-
-		$.get("/sortCeo", function(sortedData){
-		//populateTopSentiment(sortedData)
+		$.get("/sortStocks",function(sortedData){
+			populateTopSentiment(sortedData)
+			$.post("/stocksBloomberg",
+				{
+					stockTicker: stockTickerValue
+				},
+				function(results, status) {
+					createGraph(unsortedData, results);
+				});
 		})
-	});
+	  });
 
-$.post("/stocksBloomberg",
-	{
-		stockTicker: "GOOG"
-	},
-	function(results, status) {
-		//console.log("Bloomberg Object")
-		//console.log(results[1]);
-		return results[1];
-	});
+	$.post("/company",
+		{
+			stockName: stockName,
+			stockTicker: stockTickerValue
+		},
+		function(results, status) {
+			populateCompanyData(results);
+		});
 
-$.post("/company",
-	{
-		stockTicker: "GOOG"
-	},
-	function(results, status) {
-		populateCompanyData(results);
-	});
+	$.post("/ceo", 
+		{
+			ceoName: "Larry Page"
+		},
+		function(unsortedData, status) {
+			//populateTopNews(unsortedData)
 
+			$.get("/sortCeo", function(sortedData){
+			//populateTopSentiment(sortedData)
+			})
+		});
+
+	$.post("/stocksBloomberg",
+		{
+			stockTicker: "GOOG"
+		},
+		function(results, status) {
+			//console.log("Bloomberg Object")
+			//console.log(results[1]);
+			return results[1];
+		});
+
+	$.post("/company",
+		{
+			stockTicker: "GOOG"
+		},
+		function(results, status) {
+			populateCompanyData(results);
+		});
+
+}
 
 function populateTopNews(unsortedData){
 	$("#newsFeedList").empty();
@@ -71,130 +84,229 @@ function populateTopNews(unsortedData){
 	}
 }
 
-Day = function(date, score) {
-	this.date = date;
+Day = function(date, score, url, title) {
+	var temp = new Date(date);
+	this.date = date;//temp.getFullYear() + " " + temp.getDate() + " " + temp.getDate();
 	this.score = score;
+	this.url = url;
+	this.title = title;
 }	
 
-
 function createGraph(unsortedData, results) {
-	console.log(results);
+	// Largest and smallest volumes/scores
+	var largestScore, lowestScore, largestVolume, lowestVolume = 0;
+
 	// Get the aggregated scores for the scraped days
 	var ctr = 0;
 	unsortedData = unsortedData.reverse();
-	var last = unsortedData[0].date.slice(0, 10);
+	var last = unsortedData[0].date.split(0 , 10);
 	var d = [];
-	d.push(new Day(last, unsortedData[0].score));
+	var largestScore = unsortedData[0].score;
+	var lowestScore = unsortedData[0].score;
+	d.push(new Day(last, unsortedData[0].score,unsortedData[0].url,unsortedData[0].title));
 	for (var i = 1; i < unsortedData.length; i++) {
-		var date = unsortedData[i].date.slice(0, 10);
+		var date = unsortedData[i].date.split(0,10);
 		if (date <= last) {
 			d[ctr].score += unsortedData[i].score;
+			if (d[ctr].score > largestScore) {
+				largestScore = d[ctr].score;
+			}
+			else if (d[ctr].score < lowestScore) {
+				lowestScore = d[ctr].score;
+			}
 		}
 		else {
 			last = d[ctr];
-			d.push(new Day(date, unsortedData[i].score));
+			d.push(new Day(date, unsortedData[i].score, unsortedData[i].url,unsortedData[i].title));
+			if (d[ctr].score > largestScore) {
+				largestScore = d[ctr].score;
+			}
+			else if (d[ctr].score < lowestScore) {
+				lowestScore = d[ctr].score;
+			}
 			ctr++;
 		}
 	}
 
-	console.log(results);
+	//console.log(d);
+	//console.log(results);
+	//console.log(unsortedData);
 
-}
+	var d1 = []; // volume data
+	for (var x = 0; x < results[1].prices.length && x < 10; x++) {
+		d1.push(results[1].prices[x].volume);
+	}	
+
+	var ls = [];
+	for (var x = 0; x < d1.length; x++) {
+		ls.push("-");
+	}
+
+	var d2 = [];
+	for (var x = 0; x < unsortedData.length; x++) {
+		d2.push(unsortedData[x].score*1000000); // normalization by multiplying by a mil
+	}
+
+
+
+	var options = {
+		scaleFontColor: "rgba(244,244,244,1)",
+
+	    ///Boolean - Whether grid lines are shown across the chart
+	    scaleShowGridLines : true,
+
+	    //String - Colour of the grid lines
+	    scaleGridLineColor : "rgba(244,244,244,.07)",
+
+	    //Number - Width of the grid lines
+	    scaleGridLineWidth : 2,
+
+	    //Boolean - Whether the line is curved between points
+	    bezierCurve : true,
+
+	    //Number - Tension of the bezier curve between points
+	    bezierCurveTension : 0.4,
+
+	    //Boolean - Whether to show a dot for each point
+	    pointDot : true,
+
+	    //Number - Radius of each point dot in pixels
+	    pointDotRadius : 4,
+
+	    //Number - Pixel width of point dot stroke
+	    pointDotStrokeWidth : 1,
+
+	    //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
+	    pointHitDetectionRadius : 20,
+
+	    //Boolean - Whether to show a stroke for datasets
+	    datasetStroke : true,
+
+	    //Number - Pixel width of dataset stroke
+	    datasetStrokeWidth : 4,
+
+	    //Boolean - Whether to fill the dataset with a colour
+	    datasetFill : true,
+	};
+
+	var data = {
+    labels: ls,
+    datasets: [
+        {
+            label: "My First dataset",
+            fillColor: "rgba(220,220,220,0.2)",
+            strokeColor: "#f1c40f",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(220,220,220,1)",
+            data: d1
+        },
+        {
+            label: "My Second dataset",
+            fillColor: "rgba(151,187,205,0.2)",
+            strokeColor: "#2ecc71",
+            pointColor: "rgba(220,220,220,1)",
+            pointStrokeColor: "#fff",
+            pointHighlightFill: "#fff",
+            pointHighlightStroke: "rgba(151,187,205,1)",
+            data: d2
+        }
+    ]
+};
+
+	var ctx = $("#myChart").get(0).getContext("2d");
+	var myLineChart = new Chart(ctx).Line(data, options);
 
 	/*
-	// Set the dimensions of the canvas / graph
-	var	margin = {top: 30, right: 20, bottom: 30, left: 50},
-		width = 600 - margin.left - margin.right,
-		height = 270 - margin.top - margin.bottom;
+	var saveD = []
+	for(i = 0;i<d.length;i++)
+		saveD.push(d[i]);
+	var saveSentiment = d;
+	var sentimentData = [];
+	sentimentData.push("Sentiment Analysis");
+	for(i = 0; i<d.length;i++)
+	{
+		sentimentData.push(d[i].score);
+	}
+	bloombergData = [];
+	bloombergData.push("Bloomberg");
+	for(i = (results[1].prices.length-d.length); i<results[1].prices.length;i++)
+	{
+		bloombergData.push(results[1].prices[i].volume)
+	}
+	tempArrayX = [];
+	tempArrayX[0] = 'x';
+	for(i=0;i<results.length;i++)
+	{
+		temp = new Date(results[1].prices[i].date)
+		year = temp.getFullYear();
+		month = temp.getDate();
+		day = temp.getDay();
+		temp = year + "-" + month + "-" + day;
+		tempArrayX.push(temp)
+	}
+	console.log(bloombergData)
+	console.log(sentimentData)
+	console.log(tempArrayX)
+var chart = c3.generate({
+    bindto: '#chart',
+    data: {
+    	x:"x",
+      columns: [
+      	tempArrayX,
+        sentimentData,
+        bloombergData
+      ],
+      axes: {
+        bloombergData: 'y2' // ADD
+      }
+    },
+    axis: {
+      y2: {
+        show: true // ADD
+      }
+    },
+    tooltip: {
+    	format: {
+        title: function (d) {	
+        	console.log(saveD)
+        	var temp = new Date(d);
+        	year = temp.getFullYear();
+			month = temp.getDate();
+			day = temp.getDay();
+        	temp = year + " " + month + " " + day;
+			for(i = 0; i<saveD.length;i++)
+			{
+				console.log(saveD[i].date)
+				console.log(temp)
+				if(saveD[i].date===temp)
+				console.log("hi")
+				return saveD.title;
+			}
+        	return d; 
+        },
+        value: function (value, ratio, id) {
+            var format = id === 'diarrhea' ? d3.format(',') : d3.format('$');
+            return format(value);
+        		}
+	//            value: d3.format(',') // apply this format to both y and y2
+    		}
+    	},
+     axis: {
+        x: {
+            type: 'timeseries',
+            tick: {
+                format: '%Y-%m-%d'
+            }
+        }
+    }
 
-	// Parse the date / time
-	var	parseDate = d3.time.format("%d-%b-%y").parse;
-	var formatTime = d3.time.format("%e %B");// Format tooltip date / time
+});
 
-	// Set the ranges
-	var	x = d3.time.scale().range([0, width]);
-	var	y = d3.scale.linear().range([height, 0]);
-
-	// Define the axes
-	var	xAxis = d3.svg.axis().scale(x)
-		.orient("bottom").ticks(5);
-
-	var	yAxis = d3.svg.axis().scale(y)
-		.orient("left").ticks(5);
-
-	// Define the line
-	var	valueline = d3.svg.line()
-		.x(function(d) { return x(d.date); })
-		.y(function(d) { return y(d.score); });
-
-	// Define 'div' for tooltips
-	var div = d3.select("body")
-		.append("div")  // declare the tooltip div 
-		.attr("class", "tooltip")              // apply the 'tooltip' class
-		.style("opacity", 0);                  // set the opacity to nil
-
-	// Adds the svg canvas
-	var	svg = d3.select("body")
-		.append("svg")
-			.attr("width", width + margin.left + margin.right)
-			.attr("height", height + margin.top + margin.bottom)
-		.append("g")
-			.attr("transform", 
-			      "translate(" + margin.left + "," + margin.top + ")");
-
-	d3.json(unsortedData, function(error, data) {
-		unsortedData.forEach(function(d) {
-			d.date = parseDate(d.date);
-			d.score = +d.score;
-		});
-	});
-
-	// Scale the range of the data
-	x.domain(d3.extent(unsortedData, function(d) { return d.date; }));
-	y.domain([0, d3.max(unsortedData, function(d) { return d.score; })]);
-
-	// Add the valueline path.
-	svg.append("path")		
-		.attr("class", "line")
-		.attr("d", valueline(unsortedData));
-
-	// draw the scatterplot
-	svg.selectAll("dot")									
-		.data(unsortedData)											
-	.enter().append("circle")								
-		.attr("r", 5)	
-		.attr("cx", function(d) { return x(d.date); })		 
-		.attr("cy", function(d) { return y(d.score); })
-	// Tooltip stuff after this
-	    .on("mouseover", function(d) {		
-            div.transition()
-				.duration(500)	
-				.style("opacity", 0);
-			div.transition()
-				.duration(200)	
-				.style("opacity", .9);	
-			div	.html(
-				'<a href= "http://google.com">' + // The first <a> tag
-				formatTime(d.date) +
-				"</a>" +                          // closing </a> tag
-				"<br/>"  + d.score)	 
-				.style("left", (d3.event.pageX) + "px")			 
-				.style("top", (d3.event.pageY - 28) + "px");
-			});
-
-	// Add the X Axis
-	svg.append("g")	
-		.attr("class", "x axis")
-		.attr("transform", "translate(0," + height + ")")
-		.call(xAxis);
-
-	// Add the Y Axis
-	svg.append("g")	
-		.attr("class", "y axis")
-		.call(yAxis);
-}
 */
 
+}
 
 function populateTopSentiment(sortedData){
 	$("#negativeSentiment").empty();
@@ -204,9 +316,11 @@ function populateTopSentiment(sortedData){
 		var title = temp.title;
 		var score = temp.score;
 		var url = temp.url;
+		var newsDate = temp.date;
+
 		if(score<=0)
 		{
-			$("#negativeSentiment").append("<div class = 'media'><div class = 'pull-right'><div class = 'counts negative'>" + score+ "</div></div><div class = 'media body'><a href = '"+ url+"'><h6>"+ title+ "</h6></a></div></div>")
+			$("#negativeSentiment").append("<div class = 'media'><div class = 'pull-right'><div class = 'counts negative'>" + score+ "</div></div><div class = 'media body'><a href = '"+ url+"'><h6>"+ title+ "</h6></a><p>"+newsDate+"</p></div></div>")
 		}
 
 	}
@@ -216,15 +330,16 @@ function populateTopSentiment(sortedData){
 		var temp = sortedData[i];
 		var title = temp.title;
 		var score = temp.score;
+		var newsDate = temp.date;
+
 		if(score>=0)
 		{
-			$("#positiveSentiment").append("<div class = 'media'><div class = 'pull-right'><div class = 'counts positive'>" + score+ "</div></div><div class = 'media body'><a href = '"+ url+"'<h6>"+ title+ "</h6></a></div></div>")
+			$("#positiveSentiment").append("<div class = 'media'><div class = 'pull-right'><div class = 'counts positive'>" + score+ "</div></div><div class = 'media body'><a href = '"+ url+"'<h6>"+ title+ "</h6></a><p>"+newsDate+"</p></div></div>")
 		}
 	}
 }
 
 function populateCompanyData(company) {
-	console.log(company)
 	var name = company.name;
 	var ceo = company.ceo;
 	var logo_link = company.logo;
@@ -232,15 +347,16 @@ function populateCompanyData(company) {
 
 	if (name === "AMD") {
 		name = "Advanced Micro Devices";
+		$('.m-0').text("AMD");
 	}
 	else if (name === "IBM") {
 		$('.m-0').text("IBM");
 	}
 	else if (name === "Google") {
-		$('m-0').text("GOOG");
+		$('.m-0').text("GOOG");
 	}
-	else if (name === "Tesla Motors") {
-		$('m-0').text("TSLA");
+	else if (name === "Tesla") {
+		$('.m-0').text("TSLA");
 	}
 	$("#profile-menu > #sub").text(name);
 	$(".profile-pic").attr("src", logo_link);

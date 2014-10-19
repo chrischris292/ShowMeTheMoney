@@ -8,8 +8,7 @@ var request = require("request");
 var feed = require("feed-read");
 var bodyParser = require("body-parser");
 var bloomberg = require('./bloomberg.js')
-
-
+var moment = require('moment');
 var get_data = require("./data/get_data.js");
 var analyze = require('Sentimental').analyze,
     positivity = require('Sentimental').positivity,
@@ -36,7 +35,7 @@ app.use(express.static(__dirname + '/public'));
 var results =[];
 var resultSorted = [];
 app.post('/stocks', function(req, res){
-	var query = "https://news.google.com/news/feeds?q="+req.body.stockTicker+"&output=rss&num=100&scoring=n";
+	var query = "https://news.google.com/news/feeds?q="+req.body.stockTicker+"&output=rss&num=10&scoring=n";
 	feed(query, function(err, articles) { 
 		if (err) {
 			throw err;
@@ -46,6 +45,8 @@ app.post('/stocks', function(req, res){
 		for (var i = 0; i < articles.length; i++) {
 			var title = articles[i].title;
 			var date = articles[i].published;
+			date = moment(date);
+			date = date.format("YYYY MMMM Do");
 			var description = articles[i].content.replace(/<(?:.|\n)*?>/gm, '');
 			var url = articles[i].link;
 			var sentiment = analyze(description); 
@@ -81,7 +82,7 @@ app.post('/company', function(req, res) {
 })
 
 app.post("/ceo", function(req, res) {
-	var query = "https://news.google.com/news/feeds?q=" + req.body.ceoName + "&output=rss&num=100&scoring=n";
+	var query = "https://news.google.com/news/feeds?q=" + req.body.ceoName + "&output=rss&num=10&scoring=n";
 	feed(query, function(err, articles) {
 		if (err) {
 			throw err;
@@ -128,23 +129,21 @@ Glass = function(name, ceo, logo, homePage) {
 
 
 
-
-
 // THIS IS BLOOMBERG
 var symbols = ['AMD'];
 var data;
 var originalSymbolsLength = symbols.length
 app.post('/stocksBloomberg', function(req, res) {
 	if(!data) {
-		console.log(req.body.stockTicker)
+		//console.log(req.body.stockTicker)
 		symbols.push(req.body.stockTicker)
 		var stockNames = []
 		symbols.forEach(function(item) {
 			stockNames.push(item + ' US Equity')
 		})
-		bloomberg.magic(stockNames, function(array) {
-			data = array
-			res.json(data)
+		bloomberg.magic(stockNames, function(array1) {
+			console.log(array1[1].price)
+			res.json(array1);
 		})
 	}
 	else {
