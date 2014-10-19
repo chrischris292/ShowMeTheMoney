@@ -16,9 +16,10 @@ $(document).on('keydown', '#inputFormTicker', function(ev) {
 		else if (temp.toLowerCase() == "ibm") {
 			sname = "IBM";
 		}
-		else if (temp.toLowerCase() == "appl") {
+		else if (temp.toLowerCase() == "aapl") {
 			sname = "Apple";
 		}
+    	toastr.info("Loading " + sname);
 
 		$('#myCanvas').css("width", "400px");
 		$('#myCanvas').css("height", "880px");
@@ -157,10 +158,10 @@ function createGraph(unsortedData, results) {
 		d1.push(results[1].prices[x].volume);
 	}	
 
-	var ls = [];
-	for (var x = 0; x < d1.length; x++) {
-		ls.push("-");
-	}
+	var ls = ["October 7 2014", "October 8 2014", "October 9 2014", "October 10 2014","October 11 2014","October 12 2014", "October 13 2014", "October 14 2014", "October 15 2014", "October 16 2014"];
+	//for (var x = 0; x < d1.length; x++) {
+	//	ls.push("-");
+	//}
 
 	var d2 = [];
 	for (var x = 0; x < unsortedData.length; x++) {
@@ -325,6 +326,7 @@ var chart = c3.generate({
 });
 
 */
+toastr.success("Successfully Loaded")
 
 }
 
