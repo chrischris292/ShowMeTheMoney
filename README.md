@@ -13,10 +13,10 @@ Requirements: requires Bloomberg open API subscription
 
 
 _Instructions_ 
-1.  npm install express
-2.  npm install request
-3.  npm install feed-read
-4.  npm install blbai
+1. npm install express
+2. npm install request
+3. npm install feed-read
+4. npm install blbai
 5.  
 2. _How can I see the project working before I change anything?_
 
