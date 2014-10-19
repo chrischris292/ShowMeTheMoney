@@ -13,11 +13,10 @@ Requirements: requires Bloomberg open API subscription
 
 
 _Instructions_ 
-1. npm install express
-2. npm install request
-3. npm install feed-read
-4. npm install blbai
-5. 
+1. _npm install express_
+2. _npm install request_
+3. _npm install feed-read_
+4. _npm install blbai_
 
 
 ## Why isn't this project hosted online?
