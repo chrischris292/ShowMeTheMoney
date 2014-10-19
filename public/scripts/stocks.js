@@ -27,10 +27,10 @@ $.post("/ceo",
 		ceoName: "Elon Musk"
 	},
 	function(unsortedData, status) {
-		populateTopNews(unsortedData)
+		//populateTopNews(unsortedData)
 
 		$.get("/sortCeo", function(sortedData){
-		populateTopSentiment(sortedData)
+		//populateTopSentiment(sortedData)
 		})
 	});
 

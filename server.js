@@ -6,7 +6,11 @@ function contains(array, object) {
 // Server of /pub folder
 var express = require('express');
 var app = express();
-var bloomberg = require('./HistoricalData.js')
+var bloomberg = require('./bloomberg.js')
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 
 app.use(function(req, res, next) {
   console.log(req.method + '  ' + req.url);
@@ -17,19 +21,13 @@ app.listen(8765);
 
 app.use('/', express.static(__dirname + '/'));
 
-var symbols = ['GE']
-var originalSymbolsLength = symbols.length
+var symbols = ['AMD'];
 var data;
-var stockNames = []
-symbols.forEach(function(item) {
-	stockNames.push(item + ' US Equity')
-})
-bloomberg.magic(stockNames, function(array) {
-	data = array
-	console.log(data)
-})
-app.get('/stocks', function(req, res) {
+var originalSymbolsLength = symbols.length
+app.post('/stocks', function(req, res) {
 	if(!data) {
+		console.log(req.body.stockTicker)
+		symbols.push(req.body.stockTicker)
 		var stockNames = []
 		symbols.forEach(function(item) {
 			stockNames.push(item + ' US Equity')
@@ -50,7 +48,7 @@ app.get('/addSymbol', function(req,res) {
 		res.end('Go to our main page to start the app')
 	}
 	else {
-		var newSymbol = req.query.symbol || 'AAPL'
+		var newSymbol = req.query.symbol || 'AMD'
 		if(!contains(symbols, newSymbol)) {
 			var newStockName = newSymbol + ' US Equity'
 			bloomberg.magic([newStockName], function(array) {
@@ -76,3 +74,4 @@ app.get('/destroy', function(req,res) {
 	symbols = symbols.slice(0,originalSymbolsLength)
 	res.send('OK')
 })
+
