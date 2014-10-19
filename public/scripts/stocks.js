@@ -10,7 +10,6 @@ $.post("/stocks",
 		populateTopSentiment(sortedData)
 		createGraph(unsortedData);
 	})
-    //alert("Data: " + data + "\nStatus: " + status);
   });
 
 $.post("/company",
@@ -24,7 +23,7 @@ $.post("/company",
 
 $.post("/ceo", 
 	{
-		ceoName: "Elon Musk"
+		ceoName: "Larry Page"
 	},
 	function(unsortedData, status) {
 		//populateTopNews(unsortedData)
@@ -188,7 +187,16 @@ function populateCompanyData(company) {
 	if (name === "AMD") {
 		name = "Advanced Micro Devices";
 	}
-	$("#profile-menu").append(name);
+	else if (name === "IBM") {
+		$('.m-0').text("IBM");
+	}
+	else if (name === "Google") {
+		$('m-0').text("GOOG");
+	}
+	else if (name === "Tesla Motors") {
+		$('m-0').text("TSLA");
+	}
+	$("#profile-menu > #sub").text(name);
 	$(".profile-pic").attr("src", logo_link);
 	$(".profile-pic").click(function() {
 		window.location.href = homePage;

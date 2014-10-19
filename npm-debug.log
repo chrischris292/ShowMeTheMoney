@@ -1,0 +1,624 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/bin/npm', 'install' ]
+2 info using npm@2.1.4
+3 info using node@v0.10.32
+4 verbose node symlink /usr/bin/node
+5 warn package.json ShowMeTheMoney@1.0.0 No repository field.
+6 warn package.json ShowMeTheMoney@1.0.0 No README data
+7 verbose install where, deps [ '/home/xie/Documents/ShowMeTheMoney',
+7 verbose install   [ 'blpapi',
+7 verbose install     'express',
+7 verbose install     'cheerio',
+7 verbose install     'request',
+7 verbose install     'jquery',
+7 verbose install     'fs',
+7 verbose install     'Sentimental',
+7 verbose install     'feed-read',
+7 verbose install     'moment' ] ]
+8 info preinstall ShowMeTheMoney@1.0.0
+9 warn package.json fs@0.0.2 fs is also the name of a node core module.
+10 warn package.json fs@0.0.2 No description
+11 warn package.json fs@0.0.2 No repository field.
+12 warn package.json fs@0.0.2 No README data
+13 silly cache add args [ 'Sentimental@latest', null ]
+14 verbose cache add spec Sentimental@latest
+15 silly cache add args [ 'feed-read@latest', null ]
+16 verbose cache add spec feed-read@latest
+17 silly cache add args [ 'moment@latest', null ]
+18 verbose cache add spec moment@latest
+19 silly cache add args [ 'blpapi@latest', null ]
+20 verbose cache add spec blpapi@latest
+21 silly cache add parsed spec { raw: 'Sentimental@latest',
+21 silly cache add   scope: null,
+21 silly cache add   name: 'Sentimental',
+21 silly cache add   rawSpec: 'latest',
+21 silly cache add   spec: 'latest',
+21 silly cache add   type: 'tag' }
+22 verbose addNamed Sentimental@latest
+23 silly addNamed semver.valid null
+24 silly addNamed semver.validRange null
+25 info addNameTag [ 'Sentimental', 'latest' ]
+26 verbose mapToRegistry name Sentimental
+27 verbose mapToRegistry uri https://registry.npmjs.org/Sentimental
+28 verbose addNameTag registry:https://registry.npmjs.org/Sentimental not in flight; fetching
+29 silly cache add parsed spec { raw: 'feed-read@latest',
+29 silly cache add   scope: null,
+29 silly cache add   name: 'feed-read',
+29 silly cache add   rawSpec: 'latest',
+29 silly cache add   spec: 'latest',
+29 silly cache add   type: 'tag' }
+30 verbose addNamed feed-read@latest
+31 silly addNamed semver.valid null
+32 silly addNamed semver.validRange null
+33 info addNameTag [ 'feed-read', 'latest' ]
+34 verbose mapToRegistry name feed-read
+35 verbose mapToRegistry uri https://registry.npmjs.org/feed-read
+36 verbose addNameTag registry:https://registry.npmjs.org/feed-read not in flight; fetching
+37 silly cache add parsed spec { raw: 'moment@latest',
+37 silly cache add   scope: null,
+37 silly cache add   name: 'moment',
+37 silly cache add   rawSpec: 'latest',
+37 silly cache add   spec: 'latest',
+37 silly cache add   type: 'tag' }
+38 verbose addNamed moment@latest
+39 silly addNamed semver.valid null
+40 silly addNamed semver.validRange null
+41 info addNameTag [ 'moment', 'latest' ]
+42 verbose mapToRegistry name moment
+43 verbose mapToRegistry uri https://registry.npmjs.org/moment
+44 verbose addNameTag registry:https://registry.npmjs.org/moment not in flight; fetching
+45 silly cache add args [ 'express@latest', null ]
+46 verbose cache add spec express@latest
+47 silly cache add args [ 'cheerio@latest', null ]
+48 verbose cache add spec cheerio@latest
+49 silly cache add args [ 'request@latest', null ]
+50 verbose cache add spec request@latest
+51 silly cache add args [ 'jquery@latest', null ]
+52 verbose cache add spec jquery@latest
+53 silly cache add args [ 'fs@latest', null ]
+54 verbose cache add spec fs@latest
+55 silly cache add parsed spec { raw: 'blpapi@latest',
+55 silly cache add   scope: null,
+55 silly cache add   name: 'blpapi',
+55 silly cache add   rawSpec: 'latest',
+55 silly cache add   spec: 'latest',
+55 silly cache add   type: 'tag' }
+56 verbose addNamed blpapi@latest
+57 silly addNamed semver.valid null
+58 silly addNamed semver.validRange null
+59 info addNameTag [ 'blpapi', 'latest' ]
+60 verbose mapToRegistry name blpapi
+61 verbose mapToRegistry uri https://registry.npmjs.org/blpapi
+62 verbose addNameTag registry:https://registry.npmjs.org/blpapi not in flight; fetching
+63 silly cache add parsed spec { raw: 'express@latest',
+63 silly cache add   scope: null,
+63 silly cache add   name: 'express',
+63 silly cache add   rawSpec: 'latest',
+63 silly cache add   spec: 'latest',
+63 silly cache add   type: 'tag' }
+64 verbose addNamed express@latest
+65 silly addNamed semver.valid null
+66 silly addNamed semver.validRange null
+67 info addNameTag [ 'express', 'latest' ]
+68 verbose mapToRegistry name express
+69 verbose mapToRegistry uri https://registry.npmjs.org/express
+70 verbose addNameTag registry:https://registry.npmjs.org/express not in flight; fetching
+71 silly cache add parsed spec { raw: 'cheerio@latest',
+71 silly cache add   scope: null,
+71 silly cache add   name: 'cheerio',
+71 silly cache add   rawSpec: 'latest',
+71 silly cache add   spec: 'latest',
+71 silly cache add   type: 'tag' }
+72 verbose addNamed cheerio@latest
+73 silly addNamed semver.valid null
+74 silly addNamed semver.validRange null
+75 info addNameTag [ 'cheerio', 'latest' ]
+76 verbose mapToRegistry name cheerio
+77 verbose mapToRegistry uri https://registry.npmjs.org/cheerio
+78 verbose addNameTag registry:https://registry.npmjs.org/cheerio not in flight; fetching
+79 silly cache add parsed spec { raw: 'request@latest',
+79 silly cache add   scope: null,
+79 silly cache add   name: 'request',
+79 silly cache add   rawSpec: 'latest',
+79 silly cache add   spec: 'latest',
+79 silly cache add   type: 'tag' }
+80 verbose addNamed request@latest
+81 silly addNamed semver.valid null
+82 silly addNamed semver.validRange null
+83 info addNameTag [ 'request', 'latest' ]
+84 verbose mapToRegistry name request
+85 verbose mapToRegistry uri https://registry.npmjs.org/request
+86 verbose addNameTag registry:https://registry.npmjs.org/request not in flight; fetching
+87 silly cache add parsed spec { raw: 'jquery@latest',
+87 silly cache add   scope: null,
+87 silly cache add   name: 'jquery',
+87 silly cache add   rawSpec: 'latest',
+87 silly cache add   spec: 'latest',
+87 silly cache add   type: 'tag' }
+88 verbose addNamed jquery@latest
+89 silly addNamed semver.valid null
+90 silly addNamed semver.validRange null
+91 info addNameTag [ 'jquery', 'latest' ]
+92 verbose mapToRegistry name jquery
+93 verbose mapToRegistry uri https://registry.npmjs.org/jquery
+94 verbose addNameTag registry:https://registry.npmjs.org/jquery not in flight; fetching
+95 silly cache add parsed spec { raw: 'fs@latest',
+95 silly cache add   scope: null,
+95 silly cache add   name: 'fs',
+95 silly cache add   rawSpec: 'latest',
+95 silly cache add   spec: 'latest',
+95 silly cache add   type: 'tag' }
+96 verbose addNamed fs@latest
+97 silly addNamed semver.valid null
+98 silly addNamed semver.validRange null
+99 info addNameTag [ 'fs', 'latest' ]
+100 verbose mapToRegistry name fs
+101 verbose mapToRegistry uri https://registry.npmjs.org/fs
+102 verbose addNameTag registry:https://registry.npmjs.org/fs not in flight; fetching
+103 verbose request on initialization, where is /Sentimental
+104 verbose request after pass 1, where is /Sentimental
+105 verbose request url raw /Sentimental
+106 verbose request resolving registry [ 'https://registry.npmjs.org/', './Sentimental' ]
+107 verbose request after pass 2, where is https://registry.npmjs.org/Sentimental
+108 verbose request no auth needed
+109 info attempt registry request try #1 at 18:18:51
+110 verbose request id 5d9b0d65ada5d7ec
+111 verbose etag "DJY3RORP2DBK579OUXJUQYRL"
+112 http request GET https://registry.npmjs.org/Sentimental
+113 verbose request on initialization, where is /feed-read
+114 verbose request after pass 1, where is /feed-read
+115 verbose request url raw /feed-read
+116 verbose request resolving registry [ 'https://registry.npmjs.org/', './feed-read' ]
+117 verbose request after pass 2, where is https://registry.npmjs.org/feed-read
+118 verbose request no auth needed
+119 info attempt registry request try #1 at 18:18:51
+120 verbose etag "8S9F6FJTLJMOP1VHEY1R4ETID"
+121 http request GET https://registry.npmjs.org/feed-read
+122 verbose request on initialization, where is /moment
+123 verbose request after pass 1, where is /moment
+124 verbose request url raw /moment
+125 verbose request resolving registry [ 'https://registry.npmjs.org/', './moment' ]
+126 verbose request after pass 2, where is https://registry.npmjs.org/moment
+127 verbose request no auth needed
+128 info attempt registry request try #1 at 18:18:51
+129 verbose etag "EGMXJOH7O9WL0DL6M8ST0ELUS"
+130 http request GET https://registry.npmjs.org/moment
+131 verbose request on initialization, where is /blpapi
+132 verbose request after pass 1, where is /blpapi
+133 verbose request url raw /blpapi
+134 verbose request resolving registry [ 'https://registry.npmjs.org/', './blpapi' ]
+135 verbose request after pass 2, where is https://registry.npmjs.org/blpapi
+136 verbose request no auth needed
+137 info attempt registry request try #1 at 18:18:51
+138 verbose etag "IQMKWAN6WR0WUSLKLSPJ8PVD"
+139 http request GET https://registry.npmjs.org/blpapi
+140 verbose request on initialization, where is /cheerio
+141 verbose request after pass 1, where is /cheerio
+142 verbose request url raw /cheerio
+143 verbose request resolving registry [ 'https://registry.npmjs.org/', './cheerio' ]
+144 verbose request after pass 2, where is https://registry.npmjs.org/cheerio
+145 verbose request no auth needed
+146 info attempt registry request try #1 at 18:18:51
+147 verbose etag "E5VRM95DX9N6NHV5KY1I70E13"
+148 http request GET https://registry.npmjs.org/cheerio
+149 verbose request on initialization, where is /express
+150 verbose request after pass 1, where is /express
+151 verbose request url raw /express
+152 verbose request resolving registry [ 'https://registry.npmjs.org/', './express' ]
+153 verbose request after pass 2, where is https://registry.npmjs.org/express
+154 verbose request no auth needed
+155 info attempt registry request try #1 at 18:18:51
+156 verbose etag "3XJ9HQR8B57CLQRJ0HTJ1GH5I"
+157 http request GET https://registry.npmjs.org/express
+158 verbose request on initialization, where is /request
+159 verbose request after pass 1, where is /request
+160 verbose request url raw /request
+161 verbose request resolving registry [ 'https://registry.npmjs.org/', './request' ]
+162 verbose request after pass 2, where is https://registry.npmjs.org/request
+163 verbose request no auth needed
+164 info attempt registry request try #1 at 18:18:51
+165 verbose etag "9T1ZEGJB0HXZEXV4PU4HH4QX8"
+166 http request GET https://registry.npmjs.org/request
+167 verbose request on initialization, where is /fs
+168 verbose request after pass 1, where is /fs
+169 verbose request url raw /fs
+170 verbose request resolving registry [ 'https://registry.npmjs.org/', './fs' ]
+171 verbose request after pass 2, where is https://registry.npmjs.org/fs
+172 verbose request no auth needed
+173 info attempt registry request try #1 at 18:18:51
+174 verbose etag "742L7L3F5YC4ALSS204PKXXIR"
+175 http request GET https://registry.npmjs.org/fs
+176 verbose request on initialization, where is /jquery
+177 verbose request after pass 1, where is /jquery
+178 verbose request url raw /jquery
+179 verbose request resolving registry [ 'https://registry.npmjs.org/', './jquery' ]
+180 verbose request after pass 2, where is https://registry.npmjs.org/jquery
+181 verbose request no auth needed
+182 info attempt registry request try #1 at 18:18:51
+183 verbose etag "2KVM6XUXX0HJHFLJCP75C15FW"
+184 http request GET https://registry.npmjs.org/jquery
+185 http 304 https://registry.npmjs.org/feed-read
+186 silly registry.get cb [ 304,
+186 silly registry.get   { date: 'Sat, 18 Oct 2014 23:18:53 GMT',
+186 silly registry.get     server: 'Apache',
+186 silly registry.get     via: '1.1 varnish',
+186 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 23:18:53 GMT',
+186 silly registry.get     'cache-control': 'max-age=60',
+186 silly registry.get     etag: '"8S9F6FJTLJMOP1VHEY1R4ETID"',
+186 silly registry.get     age: '0',
+186 silly registry.get     'x-served-by': 'cache-ord1730-ORD',
+186 silly registry.get     'x-cache': 'MISS',
+186 silly registry.get     'x-cache-hits': '0',
+186 silly registry.get     'x-timer': 'S1413674333.151930,VS0,VE67',
+186 silly registry.get     vary: 'Accept',
+186 silly registry.get     'content-length': '0',
+186 silly registry.get     'keep-alive': 'timeout=10, max=50',
+186 silly registry.get     connection: 'Keep-Alive' } ]
+187 verbose etag https://registry.npmjs.org/feed-read from cache
+188 silly addNameTag next cb for feed-read with tag latest
+189 verbose addNamed feed-read@0.0.1
+190 silly addNamed semver.valid 0.0.1
+191 silly addNamed semver.validRange 0.0.1
+192 silly cache afterAdd feed-read@0.0.1
+193 verbose afterAdd /home/xie/.npm/feed-read/0.0.1/package/package.json not in flight; writing
+194 verbose afterAdd /home/xie/.npm/feed-read/0.0.1/package/package.json written
+195 info already installed feed-read@0.0.1
+196 http 304 https://registry.npmjs.org/moment
+197 silly registry.get cb [ 304,
+197 silly registry.get   { date: 'Sat, 18 Oct 2014 23:18:53 GMT',
+197 silly registry.get     server: 'Apache',
+197 silly registry.get     via: '1.1 varnish',
+197 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 23:18:53 GMT',
+197 silly registry.get     'cache-control': 'max-age=60',
+197 silly registry.get     etag: '"EGMXJOH7O9WL0DL6M8ST0ELUS"',
+197 silly registry.get     age: '0',
+197 silly registry.get     'x-served-by': 'cache-ord1720-ORD',
+197 silly registry.get     'x-cache': 'HIT',
+197 silly registry.get     'x-cache-hits': '1',
+197 silly registry.get     'x-timer': 'S1413674333.153164,VS0,VE130',
+197 silly registry.get     vary: 'Accept',
+197 silly registry.get     'content-length': '0',
+197 silly registry.get     'keep-alive': 'timeout=10, max=50',
+197 silly registry.get     connection: 'Keep-Alive' } ]
+198 verbose etag https://registry.npmjs.org/moment from cache
+199 http 304 https://registry.npmjs.org/Sentimental
+200 silly registry.get cb [ 304,
+200 silly registry.get   { date: 'Sat, 18 Oct 2014 23:18:53 GMT',
+200 silly registry.get     server: 'Apache',
+200 silly registry.get     via: '1.1 varnish',
+200 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 23:18:53 GMT',
+200 silly registry.get     'cache-control': 'max-age=60',
+200 silly registry.get     etag: '"DJY3RORP2DBK579OUXJUQYRL"',
+200 silly registry.get     age: '0',
+200 silly registry.get     'x-served-by': 'cache-ord1732-ORD',
+200 silly registry.get     'x-cache': 'MISS',
+200 silly registry.get     'x-cache-hits': '0',
+200 silly registry.get     'x-timer': 'S1413674333.153687,VS0,VE142',
+200 silly registry.get     vary: 'Accept',
+200 silly registry.get     'content-length': '0',
+200 silly registry.get     'keep-alive': 'timeout=10, max=50',
+200 silly registry.get     connection: 'Keep-Alive' } ]
+201 verbose etag https://registry.npmjs.org/Sentimental from cache
+202 silly addNameTag next cb for moment with tag latest
+203 verbose addNamed moment@2.8.3
+204 silly addNamed semver.valid 2.8.3
+205 silly addNamed semver.validRange 2.8.3
+206 silly addNameTag next cb for Sentimental with tag latest
+207 verbose addNamed Sentimental@1.0.1
+208 silly addNamed semver.valid 1.0.1
+209 silly addNamed semver.validRange 1.0.1
+210 silly cache afterAdd moment@2.8.3
+211 verbose afterAdd /home/xie/.npm/moment/2.8.3/package/package.json not in flight; writing
+212 silly cache afterAdd Sentimental@1.0.1
+213 verbose afterAdd /home/xie/.npm/Sentimental/1.0.1/package/package.json not in flight; writing
+214 verbose afterAdd /home/xie/.npm/moment/2.8.3/package/package.json written
+215 info already installed moment@2.8.3
+216 verbose afterAdd /home/xie/.npm/Sentimental/1.0.1/package/package.json written
+217 info already installed Sentimental@1.0.1
+218 http 304 https://registry.npmjs.org/express
+219 silly registry.get cb [ 304,
+219 silly registry.get   { date: 'Sat, 18 Oct 2014 23:18:53 GMT',
+219 silly registry.get     server: 'Apache',
+219 silly registry.get     via: '1.1 varnish',
+219 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 23:18:53 GMT',
+219 silly registry.get     'cache-control': 'max-age=60',
+219 silly registry.get     etag: '"3XJ9HQR8B57CLQRJ0HTJ1GH5I"',
+219 silly registry.get     age: '0',
+219 silly registry.get     'x-served-by': 'cache-ord1730-ORD',
+219 silly registry.get     'x-cache': 'HIT',
+219 silly registry.get     'x-cache-hits': '1',
+219 silly registry.get     'x-timer': 'S1413674333.254061,VS0,VE65',
+219 silly registry.get     vary: 'Accept',
+219 silly registry.get     'content-length': '0',
+219 silly registry.get     'keep-alive': 'timeout=10, max=49',
+219 silly registry.get     connection: 'Keep-Alive' } ]
+220 verbose etag https://registry.npmjs.org/express from cache
+221 http 304 https://registry.npmjs.org/request
+222 silly registry.get cb [ 304,
+222 silly registry.get   { date: 'Sat, 18 Oct 2014 23:18:53 GMT',
+222 silly registry.get     server: 'Apache',
+222 silly registry.get     via: '1.1 varnish',
+222 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 23:18:53 GMT',
+222 silly registry.get     'cache-control': 'max-age=60',
+222 silly registry.get     etag: '"9T1ZEGJB0HXZEXV4PU4HH4QX8"',
+222 silly registry.get     age: '22',
+222 silly registry.get     'x-served-by': 'cache-ord1720-ORD',
+222 silly registry.get     'x-cache': 'HIT',
+222 silly registry.get     'x-cache-hits': '1',
+222 silly registry.get     'x-timer': 'S1413674333.347864,VS0,VE0',
+222 silly registry.get     vary: 'Accept',
+222 silly registry.get     'content-length': '0',
+222 silly registry.get     'keep-alive': 'timeout=10, max=49',
+222 silly registry.get     connection: 'Keep-Alive' } ]
+223 verbose etag https://registry.npmjs.org/request from cache
+224 silly addNameTag next cb for express with tag latest
+225 verbose addNamed express@4.9.8
+226 silly addNamed semver.valid 4.9.8
+227 silly addNamed semver.validRange 4.9.8
+228 silly addNameTag next cb for request with tag latest
+229 verbose addNamed request@2.45.0
+230 silly addNamed semver.valid 2.45.0
+231 silly addNamed semver.validRange 2.45.0
+232 silly cache afterAdd express@4.9.8
+233 verbose afterAdd /home/xie/.npm/express/4.9.8/package/package.json not in flight; writing
+234 silly cache afterAdd request@2.45.0
+235 verbose afterAdd /home/xie/.npm/request/2.45.0/package/package.json not in flight; writing
+236 verbose afterAdd /home/xie/.npm/express/4.9.8/package/package.json written
+237 info already installed express@4.9.8
+238 verbose afterAdd /home/xie/.npm/request/2.45.0/package/package.json written
+239 info already installed request@2.45.0
+240 http 304 https://registry.npmjs.org/jquery
+241 silly registry.get cb [ 304,
+241 silly registry.get   { date: 'Sat, 18 Oct 2014 23:18:53 GMT',
+241 silly registry.get     server: 'Apache',
+241 silly registry.get     via: '1.1 varnish',
+241 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 23:18:53 GMT',
+241 silly registry.get     'cache-control': 'max-age=60',
+241 silly registry.get     etag: '"2KVM6XUXX0HJHFLJCP75C15FW"',
+241 silly registry.get     age: '0',
+241 silly registry.get     'x-served-by': 'cache-ord1730-ORD',
+241 silly registry.get     'x-cache': 'MISS',
+241 silly registry.get     'x-cache-hits': '0',
+241 silly registry.get     'x-timer': 'S1413674333.387170,VS0,VE29',
+241 silly registry.get     vary: 'Accept',
+241 silly registry.get     'content-length': '0',
+241 silly registry.get     'keep-alive': 'timeout=10, max=48',
+241 silly registry.get     connection: 'Keep-Alive' } ]
+242 verbose etag https://registry.npmjs.org/jquery from cache
+243 silly addNameTag next cb for jquery with tag latest
+244 verbose addNamed jquery@2.1.1
+245 silly addNamed semver.valid 2.1.1
+246 silly addNamed semver.validRange 2.1.1
+247 silly cache afterAdd jquery@2.1.1
+248 verbose afterAdd /home/xie/.npm/jquery/2.1.1/package/package.json not in flight; writing
+249 verbose afterAdd /home/xie/.npm/jquery/2.1.1/package/package.json written
+250 info already installed jquery@2.1.1
+251 http 304 https://registry.npmjs.org/cheerio
+252 silly registry.get cb [ 304,
+252 silly registry.get   { date: 'Sat, 18 Oct 2014 23:18:53 GMT',
+252 silly registry.get     server: 'Apache',
+252 silly registry.get     via: '1.1 varnish',
+252 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 23:18:53 GMT',
+252 silly registry.get     'cache-control': 'max-age=60',
+252 silly registry.get     etag: '"E5VRM95DX9N6NHV5KY1I70E13"',
+252 silly registry.get     age: '0',
+252 silly registry.get     'x-served-by': 'cache-ord1721-ORD',
+252 silly registry.get     'x-cache': 'HIT',
+252 silly registry.get     'x-cache-hits': '1',
+252 silly registry.get     'x-timer': 'S1413674333.230051,VS0,VE655',
+252 silly registry.get     vary: 'Accept',
+252 silly registry.get     'content-length': '0',
+252 silly registry.get     'keep-alive': 'timeout=10, max=50',
+252 silly registry.get     connection: 'Keep-Alive' } ]
+253 verbose etag https://registry.npmjs.org/cheerio from cache
+254 silly addNameTag next cb for cheerio with tag latest
+255 verbose addNamed cheerio@0.17.0
+256 silly addNamed semver.valid 0.17.0
+257 silly addNamed semver.validRange 0.17.0
+258 silly cache afterAdd cheerio@0.17.0
+259 verbose afterAdd /home/xie/.npm/cheerio/0.17.0/package/package.json not in flight; writing
+260 verbose afterAdd /home/xie/.npm/cheerio/0.17.0/package/package.json written
+261 info already installed cheerio@0.17.0
+262 http 304 https://registry.npmjs.org/blpapi
+263 silly registry.get cb [ 304,
+263 silly registry.get   { date: 'Sat, 18 Oct 2014 23:18:53 GMT',
+263 silly registry.get     server: 'Apache',
+263 silly registry.get     via: '1.1 varnish',
+263 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 23:18:53 GMT',
+263 silly registry.get     'cache-control': 'max-age=60',
+263 silly registry.get     etag: '"IQMKWAN6WR0WUSLKLSPJ8PVD"',
+263 silly registry.get     age: '0',
+263 silly registry.get     'x-served-by': 'cache-ord1722-ORD',
+263 silly registry.get     'x-cache': 'MISS',
+263 silly registry.get     'x-cache-hits': '0',
+263 silly registry.get     'x-timer': 'S1413674333.154895,VS0,VE811',
+263 silly registry.get     vary: 'Accept',
+263 silly registry.get     'content-length': '0',
+263 silly registry.get     'keep-alive': 'timeout=10, max=50',
+263 silly registry.get     connection: 'Keep-Alive' } ]
+264 verbose etag https://registry.npmjs.org/blpapi from cache
+265 silly addNameTag next cb for blpapi with tag latest
+266 verbose addNamed blpapi@0.1.10
+267 silly addNamed semver.valid 0.1.10
+268 silly addNamed semver.validRange 0.1.10
+269 silly cache afterAdd blpapi@0.1.10
+270 verbose afterAdd /home/xie/.npm/blpapi/0.1.10/package/package.json not in flight; writing
+271 verbose afterAdd /home/xie/.npm/blpapi/0.1.10/package/package.json written
+272 http 304 https://registry.npmjs.org/fs
+273 silly registry.get cb [ 304,
+273 silly registry.get   { date: 'Sat, 18 Oct 2014 23:18:53 GMT',
+273 silly registry.get     server: 'Apache',
+273 silly registry.get     via: '1.1 varnish',
+273 silly registry.get     'last-modified': 'Sat, 18 Oct 2014 23:18:54 GMT',
+273 silly registry.get     'cache-control': 'max-age=60',
+273 silly registry.get     etag: '"742L7L3F5YC4ALSS204PKXXIR"',
+273 silly registry.get     age: '0',
+273 silly registry.get     'x-served-by': 'cache-ord1732-ORD',
+273 silly registry.get     'x-cache': 'MISS',
+273 silly registry.get     'x-cache-hits': '0',
+273 silly registry.get     'x-timer': 'S1413674333.351166,VS0,VE654',
+273 silly registry.get     vary: 'Accept',
+273 silly registry.get     'content-length': '0',
+273 silly registry.get     'keep-alive': 'timeout=10, max=49',
+273 silly registry.get     connection: 'Keep-Alive' } ]
+274 verbose etag https://registry.npmjs.org/fs from cache
+275 silly addNameTag next cb for fs with tag latest
+276 verbose addNamed fs@0.0.2
+277 silly addNamed semver.valid 0.0.2
+278 silly addNamed semver.validRange 0.0.2
+279 silly cache afterAdd fs@0.0.2
+280 verbose afterAdd /home/xie/.npm/fs/0.0.2/package/package.json not in flight; writing
+281 verbose afterAdd /home/xie/.npm/fs/0.0.2/package/package.json written
+282 info already installed fs@0.0.2
+283 silly install resolved [ { name: 'blpapi',
+283 silly install resolved     version: '0.1.10',
+283 silly install resolved     main: './blpapi.js',
+283 silly install resolved     description: 'Bloomberg Open API (BLPAPI) binding for node.js',
+283 silly install resolved     os: [ 'linux', 'win32', 'darwin' ],
+283 silly install resolved     cpu: [ 'x64', 'ia32' ],
+283 silly install resolved     scripts: { install: 'node-gyp configure build' },
+283 silly install resolved     repository:
+283 silly install resolved      { type: 'git',
+283 silly install resolved        url: 'https://github.com/bloomberg/blpapi-node.git' },
+283 silly install resolved     bugs:
+283 silly install resolved      { url: 'https://github.com/bloomberg/blpapi-node/issues',
+283 silly install resolved        email: 'open-tech@bloomberg.net' },
+283 silly install resolved     maintainers: [ [Object] ],
+283 silly install resolved     keywords:
+283 silly install resolved      [ 'finance',
+283 silly install resolved        'stocks',
+283 silly install resolved        'stock',
+283 silly install resolved        'quotes',
+283 silly install resolved        'tick',
+283 silly install resolved        'realtime',
+283 silly install resolved        'market' ],
+283 silly install resolved     license: 'MIT',
+283 silly install resolved     engines: { node: '>=0.6' },
+283 silly install resolved     homepage: 'https://github.com/bloomberg/blpapi-node',
+283 silly install resolved     _id: 'blpapi@0.1.10',
+283 silly install resolved     dist:
+283 silly install resolved      { shasum: 'ebb738fc5362e285652e1eb2f75b82478e6dde8b',
+283 silly install resolved        tarball: 'http://registry.npmjs.org/blpapi/-/blpapi-0.1.10.tgz' },
+283 silly install resolved     _from: 'blpapi@latest',
+283 silly install resolved     _npmVersion: '1.4.6',
+283 silly install resolved     _npmUser: { name: 'apaprocki', email: 'andrew@ishiboo.com' },
+283 silly install resolved     directories: {},
+283 silly install resolved     _shasum: 'ebb738fc5362e285652e1eb2f75b82478e6dde8b',
+283 silly install resolved     _resolved: 'https://registry.npmjs.org/blpapi/-/blpapi-0.1.10.tgz',
+283 silly install resolved     readme: 'ERROR: No README data found!' } ]
+284 info install blpapi@0.1.10 into /home/xie/Documents/ShowMeTheMoney
+285 info installOne blpapi@0.1.10
+286 verbose installOne of blpapi to /home/xie/Documents/ShowMeTheMoney not in flight; installing
+287 verbose lock using /home/xie/.npm/_locks/blpapi-8d96cb99e42a6493.lock for /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+288 silly install write writing blpapi 0.1.10 to /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+289 silly cache addNamed cb blpapi@0.1.10
+290 verbose unbuild node_modules/blpapi
+291 verbose gentlyRm vacuuming /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+292 verbose tar unpack /home/xie/.npm/blpapi/0.1.10/package.tgz
+293 verbose tar unpacking to /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+294 verbose gentlyRm vacuuming /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+295 silly gunzTarPerm modes [ '755', '644' ]
+296 silly gunzTarPerm extractEntry package.json
+297 silly gunzTarPerm extractEntry README.md
+298 silly gunzTarPerm extractEntry LICENSE
+299 silly gunzTarPerm extractEntry blpapi.js
+300 silly gunzTarPerm extractEntry .travis.yml
+301 silly gunzTarPerm extractEntry binding.gyp
+302 silly gunzTarPerm extractEntry blpapijs.cpp
+303 silly gunzTarPerm extractEntry deps/blpapi/LICENSE
+304 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_logging.h
+305 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_abstractsession.h
+306 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_constant.h
+307 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_correlationid.h
+308 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_datetime.h
+309 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_defs.h
+310 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_diagnosticsutil.h
+311 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_dispatchtbl.h
+312 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_element.h
+313 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_error.h
+314 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_event.h
+315 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_eventdispatcher.h
+316 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_eventformatter.h
+317 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_exception.h
+318 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_identity.h
+319 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_call.h
+320 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_message.h
+321 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_name.h
+322 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_providersession.h
+323 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_request.h
+324 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_resolutionlist.h
+325 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_schema.h
+326 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_service.h
+327 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_session.h
+328 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_sessionoptions.h
+329 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_streamproxy.h
+330 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_subscriptionlist.h
+331 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_topic.h
+332 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_topiclist.h
+333 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_types.h
+334 silly gunzTarPerm extractEntry deps/blpapi/include/blpapi_versioninfo.h
+335 silly gunzTarPerm extractEntry deps/blpapi/linux/libblpapi3_32.so
+336 silly gunzTarPerm extractEntry deps/blpapi/linux/libblpapi3_64.so
+337 silly gunzTarPerm extractEntry deps/blpapi/osx/libblpapi3_32.so
+338 silly gunzTarPerm extractEntry deps/blpapi/osx/libblpapi3_64.so
+339 silly gunzTarPerm extractEntry deps/blpapi/win/blpapi3_32.lib
+340 silly gunzTarPerm extractEntry deps/blpapi/win/blpapi3_64.lib
+341 silly gunzTarPerm extractEntry examples/AuthorizationApplication.js
+342 silly gunzTarPerm extractEntry examples/FieldSearchRequest.js
+343 silly gunzTarPerm extractEntry examples/HistoricalDataRequest.js
+344 silly gunzTarPerm extractEntry examples/IntradayBarRequest.js
+345 silly gunzTarPerm extractEntry examples/Console.js
+346 silly gunzTarPerm extractEntry examples/MarketBarSubscription.js
+347 silly gunzTarPerm extractEntry examples/MarketSubUnsubscription.js
+348 silly gunzTarPerm extractEntry examples/MarketSubscription.js
+349 silly gunzTarPerm extractEntry examples/MarketVwapSubscription.js
+350 silly gunzTarPerm extractEntry examples/OptionChain.js
+351 silly gunzTarPerm extractEntry examples/IntradayTickRequest.js
+352 info preinstall blpapi@0.1.10
+353 silly install resolved []
+354 verbose about to build /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+355 info build /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+356 verbose linkStuff [ false,
+356 verbose linkStuff   false,
+356 verbose linkStuff   false,
+356 verbose linkStuff   '/home/xie/Documents/ShowMeTheMoney/node_modules' ]
+357 info linkStuff blpapi@0.1.10
+358 verbose linkBins blpapi@0.1.10
+359 verbose linkMans blpapi@0.1.10
+360 verbose rebuildBundles blpapi@0.1.10
+361 info install blpapi@0.1.10
+362 verbose unsafe-perm in lifecycle false
+363 info blpapi@0.1.10 Failed to exec install script
+364 verbose unlock done using /home/xie/.npm/_locks/blpapi-8d96cb99e42a6493.lock for /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+365 verbose stack Error: blpapi@0.1.10 install: `node-gyp configure build`
+365 verbose stack Exit status 1
+365 verbose stack     at ChildProcess.<anonymous> (/usr/lib/node_modules/npm/lib/utils/lifecycle.js:212:16)
+365 verbose stack     at ChildProcess.emit (events.js:98:17)
+365 verbose stack     at maybeClose (child_process.js:756:16)
+365 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:823:5)
+366 verbose pkgid blpapi@0.1.10
+367 verbose cwd /home/xie/Documents/ShowMeTheMoney
+368 error Linux 3.8.11
+369 error argv "node" "/usr/bin/npm" "install"
+370 error node v0.10.32
+371 error npm  v2.1.4
+372 error code ELIFECYCLE
+373 error blpapi@0.1.10 install: `node-gyp configure build`
+373 error Exit status 1
+374 error Failed at the blpapi@0.1.10 install script.
+374 error This is most likely a problem with the blpapi package,
+374 error not with npm itself.
+374 error Tell the author that this fails on your system:
+374 error     node-gyp configure build
+374 error You can get their info via:
+374 error     npm owner ls blpapi
+374 error There is likely additional logging output above.
+375 verbose exit [ 1, true ]
+376 verbose unbuild node_modules/blpapi
+377 info preuninstall blpapi@0.1.10
+378 info uninstall blpapi@0.1.10
+379 verbose unbuild rmStuff blpapi@0.1.10 from /home/xie/Documents/ShowMeTheMoney/node_modules
+380 info postuninstall blpapi@0.1.10
+381 verbose gentlyRm vacuuming /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+382 silly gentlyRm purging /home/xie/Documents/ShowMeTheMoney/node_modules/blpapi
+383 silly gentlyRm quitting because other entries in /home/xie/Documents/ShowMeTheMoney/node_modules

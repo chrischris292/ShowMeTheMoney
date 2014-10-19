@@ -12,6 +12,7 @@
     "jquery": "latest",
     "fs": "latest",
     "Sentimental": "latest",
-    "feed-read": "latest"
+    "feed-read": "latest",
+    "moment": "latest"
   }
 }
