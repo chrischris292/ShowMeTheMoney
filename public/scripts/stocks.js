@@ -4,7 +4,6 @@ $.post("/stocks",
     stockTicker:"GOOG"
   },
   function(unsortedData,status){
-  	console.log(unsortedData)
 	populateTopNews(unsortedData)
 
 	$.get("/sortStocks",function(sortedData){
@@ -35,6 +34,14 @@ $.post("/ceo",
 		})
 	});
 
+$.post("/stocksBloomberg",
+	{
+		stockTicker: "GOOG"
+	},
+	function(results, status) {
+		console.log("Bloomberg Object")
+		console.log(results[1]);
+	});
 
 $.post("/company",
 	{
@@ -46,6 +53,7 @@ $.post("/company",
 
 
 function populateTopNews(unsortedData){
+	$("#newsFeedList").empty();
 	for(i = 0;i<8;i++)
 	{
 		var temp = unsortedData[i];
@@ -144,6 +152,7 @@ var	svg = d3.select("body")
 	}
 
 function populateTopSentiment(sortedData){
+	$("#negativeSentiment").empty();
 	for( i = 0;i<5;i++)
 	{
 		var temp = sortedData[i];
@@ -156,6 +165,7 @@ function populateTopSentiment(sortedData){
 		}
 
 	}
+	$("#positiveSentiment").empty();
 	for(i = sortedData.length-1;i>sortedData.length-6;i=i-1)
 	{
 		var temp = sortedData[i];
