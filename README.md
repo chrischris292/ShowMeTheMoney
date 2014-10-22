@@ -1,5 +1,7 @@
 # Show Me The Money
 
+https://www.youtube.com/watch?v=A7e6KkF02Cw&list=UUDlJ6cXcsM1RGAyWwGMPopg
+
 Description: The price of a stock relies on a vast amount of data. During boilermake, a hackathon at purdue, we developed an application
 that web scrapes hundreds of news articles relevant to a company and projects a sentiment analysis tool onto the data to engineer a 
 new dimension to stock analysis. Very few tools out there do what this application does, and the ones that do exist lack foundamental 
