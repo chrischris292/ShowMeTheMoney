@@ -15,7 +15,7 @@ Requirements: requires Bloomberg open API subscription
               nodejs 
 
 
-##Instructions
+## Instructions
 1. _npm install express_
 2. _npm install request_
 3. _npm install feed-read_
